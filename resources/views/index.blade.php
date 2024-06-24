@@ -1,16 +1,17 @@
+@php $locale = session()->get('locale'); @endphp
 <x-master-layout>
     <div class="content">
         <section class="banner-pages homepage">
             <div class="container">
                 <div class="text">
-                    <p class="subtitle">Pharmacy Bali</p>
+                    <p class="subtitle">{{__('index.banner_txt_normal')}}</p>
                     <h3 class="fw-bold">
-                        Your Trusted Online Pharmacy!
+                        {{__('index.banner_txt_bold')}}
                     </h3>
                     <p>
-                        Get Your Medications Delivered to Your Doorstep
+                        {{__('index.banner_txt_1')}}
                     </p>
-                    <a href="https://api.whatsapp.com/send/?phone=6285212500030" class="btn btn-warning fs-14">Order Now
+                    <a href="https://api.whatsapp.com/send/?phone=6285212500030" class="btn btn-warning fs-14">{{__('index.text_button')}}
                     </a>
                 </div>
             </div>
@@ -22,16 +23,21 @@
                 <div class="text-center">
                     <div class="title-icon">
                         <div class="text">
-                            <span>Why Choose</span>
-                            <h5>Pharmacy Bali ?</h5>
+                            <span>{{__('index.section_2.header_1')}}</span>
+                            <h5>{{__('index.section_2.header_2')}}</h5>
                         </div>
                         <img src="assets/img/img-hospital.png" alt="">
                     </div>
                 </div>
                 <div class="row justify-content-center mt-4">
                     <div class="col-md-10">
-                        <img src="assets/img/why-pharmacy.svg" class="d-none d-md-block w-100" alt="">
-                        <img src="assets/img/why-pharmacy-mobile.svg" class="d-block d-md-none w-100" alt="">
+                        @if ($locale === 'en')
+                            <img src="assets/img/why-pharmacy.svg" class="d-none d-md-block w-100" alt="">
+                            <img src="assets/img/why-pharmacy-mobile.svg" class="d-block d-md-none w-100" alt="">
+                        @else
+                            <img src="assets/img/why-pharmacy-indo.svg" class="d-none d-md-block w-100" alt="">
+                            <img src="assets/img/why-pharmacy-mobile-indo.svg" class="d-block d-md-none w-100" alt="">
+                        @endif
                     </div>
                 </div>
             </div>
@@ -39,8 +45,13 @@
 
         <section class="how">
             <div class="container">
-                <img src="assets/img/how-work.svg" class="d-none d-md-block w-100" alt="">
-                <img src="assets/img/how-work-mobile.svg" class="d-block d-md-none w-100" alt="">
+                @if ($locale === 'en')
+                    <img src="assets/img/how-work.svg" class="d-none d-md-block w-100" alt="">
+                    <img src="assets/img/how-work-mobile.svg" class="d-block d-md-none w-100" alt="">
+                @else
+                    <img src="assets/img/how-work-indo.svg" class="d-none d-md-block w-100" alt="">
+                    <img src="assets/img/how-work-mobile-indo.svg" class="d-block d-md-none w-100" alt="">
+                @endif
             </div>
         </section>
 
@@ -49,8 +60,8 @@
                 <div class="text-center">
                     <div class="title-icon">
                         <div class="text">
-                            <span>Customer</span>
-                            <h5>Testimonials</h5>
+                            <span>{{__('index.section_testimoni.header_1')}}</span>
+                            <h5>{{__('index.section_testimoni.header_2')}}</h5>
                         </div>
                         <img src="assets/img/img-testimonial.png" alt="">
                     </div>
@@ -61,7 +72,7 @@
                             <div class="card-slide-testimoni">
                                 <div class="top">
                                     <p class="say">
-                                        "The pharmacists were very helpful in answering my questions. Highly recommend!"
+                                        "{{__('index.section_testimoni.sarah')}}"
                                     </p>
                                 </div>
                                 <div class="name">
@@ -81,7 +92,7 @@
                             <div class="card-slide-testimoni">
                                 <div class="top">
                                     <p class="say">
-                                        "Excellent service! My medications arrived on time and the process was so easy."
+                                        "{{__('index.section_testimoni.jane')}}"
                                     </p>
                                 </div>
                                 <div class="name">
@@ -101,7 +112,7 @@
                             <div class="card-slide-testimoni">
                                 <div class="top">
                                     <p class="say">
-                                        "Great selection of products and very user-friendly website."
+                                        "{{__('index.section_testimoni.mark')}}"
                                     </p>
                                 </div>
                                 <div class="name">

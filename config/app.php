@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Jakarta',
 
     /*
     |--------------------------------------------------------------------------
@@ -95,6 +95,11 @@ return [
 
     'fallback_locale' => 'en',
 
+    'available_locales' => [
+        'English' => 'en',
+        'Indonesia' => 'id',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Faker Locale
@@ -107,6 +112,11 @@ return [
     */
 
     'faker_locale' => 'en_US',
+
+    'available_locales' => [
+        'English' => 'en',
+        'Indonesia' => 'id',
+    ],
 
     /*
     |--------------------------------------------------------------------------
