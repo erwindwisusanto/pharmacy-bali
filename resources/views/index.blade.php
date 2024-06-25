@@ -34,9 +34,12 @@
                         @if ($locale === 'en')
                             <img src="assets/img/why-pharmacy.svg" class="d-none d-md-block w-100" alt="">
                             <img src="assets/img/why-pharmacy-mobile.svg" class="d-block d-md-none w-100" alt="">
-                        @else
+                        @elseif($locale === 'id')
                             <img src="assets/img/why-pharmacy-indo.svg" class="d-none d-md-block w-100" alt="">
                             <img src="assets/img/why-pharmacy-mobile-indo.svg" class="d-block d-md-none w-100" alt="">
+                        @else
+                            <img src="assets/img/why-pharmacy.svg" class="d-none d-md-block w-100" alt="">
+                            <img src="assets/img/why-pharmacy-mobile.svg" class="d-block d-md-none w-100" alt="">
                         @endif
                     </div>
                 </div>
@@ -48,9 +51,12 @@
                 @if ($locale === 'en')
                     <img src="assets/img/how-work.svg" class="d-none d-md-block w-100" alt="">
                     <img src="assets/img/how-work-mobile.svg" class="d-block d-md-none w-100" alt="">
-                @else
+                @elseif($locale === 'id')
                     <img src="assets/img/how-work-indo.svg" class="d-none d-md-block w-100" alt="">
                     <img src="assets/img/how-work-mobile-indo.svg" class="d-block d-md-none w-100" alt="">
+                @else
+                    <img src="assets/img/how-work.svg" class="d-none d-md-block w-100" alt="">
+                    <img src="assets/img/how-work-mobile.svg" class="d-block d-md-none w-100" alt="">
                 @endif
             </div>
         </section>
