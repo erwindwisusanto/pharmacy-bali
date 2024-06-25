@@ -86,6 +86,10 @@
                 return false;
             });
         });
+
+        window.addEventListener('beforeunload', function (e) {
+            navigator.sendBeacon('/destroy-session');
+        });
     </script>
 
 </body>
