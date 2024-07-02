@@ -55,10 +55,10 @@
 
         const visitCounter = async () => {
             const resp =  await $.ajax({
-                _token: $('meta[name="csrf-token"]').attr('content'),
                 url: '{{ route('visit-count') }}',
                 type: 'POST',
                 data: {
+                    _token: '{{ csrf_token() }}',
                     url: baseUrl,
                     campaign: campaignName,
                     source: webSource,
@@ -170,7 +170,9 @@
         }
 
         $(document).ready(function () {
-            visitCounter();
+            setTimeout(function () {
+                visitCounter();
+            }, 2000);
             new Swiper('.swiper-article', {
                 loop: true,
                 slidesPerView: 3,
