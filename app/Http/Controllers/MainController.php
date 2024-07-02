@@ -27,7 +27,7 @@ class MainController extends Controller
 
         if ($isValidCampaign || $campaign === "") {
             $today = Carbon::today();
-            $visit = Visit::whereDate('date', $today)->where('campaign_name', $campaign)->first();
+            $visit = Visit::whereDate('date', $today)->where('campaign_name', $campaign)->where('source', $source)->first();
 
             if ($visit) {
                 $visit->campaign_name = $campaign;
@@ -60,7 +60,7 @@ class MainController extends Controller
 
         if ($isValidCampaign || $campaign === "") {
             $today = Carbon::today();
-            $camplog = Visit::whereDate('date', $today)->where('campaign_name', $campaign)->first();
+            $camplog = Visit::whereDate('date', $today)->where('campaign_name', $campaign)->where('source', $source)->first();
 
             if ($camplog) {
                 if ($platform === "whatsapp") {
