@@ -77,6 +77,7 @@
 
         $('.whatsapp-link').on('click', function(e) {
             e.preventDefault();
+            console.log(123);
             const url = $(this).attr('href');
             const platform = "whatsapp";
             updateCounter(campaignName, platform);
