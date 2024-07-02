@@ -53,8 +53,8 @@
         const campaignName = "{{ request()->query('camp') }}";
         const webSource = "pharmacy_bali";
 
-        const visitCounter = async () => {
-            const resp =  await $.ajax({
+        const visitCounter = () => {
+            $.ajax({
                 url: '{{ route('visit-count') }}',
                 type: 'POST',
                 data: {
@@ -172,7 +172,7 @@
         $(document).ready(function () {
             setTimeout(function () {
                 visitCounter();
-            }, 2000);
+            }, 1000);
             new Swiper('.swiper-article', {
                 loop: true,
                 slidesPerView: 3,
