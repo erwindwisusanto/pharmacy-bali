@@ -53,8 +53,9 @@
         const campaignName = "{{ request()->query('camp') }}";
         const webSource = "pharmacy_bali";
 
-        const visitCounter = () => {
-            $.ajax({
+        const visitCounter = async () => {
+            const resp =  await $.ajax({
+                _token: $('meta[name="csrf-token"]').attr('content'),
                 url: '{{ route('visit-count') }}',
                 type: 'POST',
                 data: {
