@@ -11,7 +11,7 @@
                     <p>
                         {{__('index.banner_txt_1')}}
                     </p>
-                    <a onclick="directurl('wa')" class="btn btn-warning fs-14 whatsapp-link">{{__('index.text_button')}}
+                    <a onclick="directurl('whatsapp')" class="btn btn-warning fs-14">{{__('index.text_button')}}
                     </a>
                 </div>
             </div>
