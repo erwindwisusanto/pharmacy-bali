@@ -46,22 +46,22 @@
             </div>
         </section>
 
-        <section class="how">
+        <section class="how" style="border-bottom: 2px solid #fff;">
             <div class="container">
                 @if ($locale === 'en')
-                    <img src="assets/img/how-work.svg" class="d-none d-md-block w-100" alt="">
-                    <img src="assets/img/how-work-mobile.svg" class="d-block d-md-none w-100" alt="">
+                    <img src="assets/img/how-work.jpg" class="d-none d-md-block w-100" alt="">
+                    <img src="assets/img/how-work-mobile.jpg" class="d-block d-md-none w-100" alt="">
                 @elseif($locale === 'id')
-                    <img src="assets/img/how-work-indo.svg" class="d-none d-md-block w-100" alt="">
-                    <img src="assets/img/how-work-mobile-indo.svg" class="d-block d-md-none w-100" alt="">
+                    <img src="assets/img/how-work-indo.jpg" class="d-none d-md-block w-100" alt="">
+                    <img src="assets/img/how-work-mobile-indo.jpg" class="d-block d-md-none w-100" alt="">
                 @else
-                    <img src="assets/img/how-work.svg" class="d-none d-md-block w-100" alt="">
-                    <img src="assets/img/how-work-mobile.svg" class="d-block d-md-none w-100" alt="">
+                    <img src="assets/img/how-work.jpg" class="d-none d-md-block w-100" alt="">
+                    <img src="assets/img/how-work-mobile.jpg" class="d-block d-md-none w-100" alt="">
                 @endif
             </div>
         </section>
 
-        <section class="testimonial">
+        {{-- <section class="testimonial">
             <div class="container">
                 <div class="text-center">
                     <div class="title-icon">
@@ -137,7 +137,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
 
     </div>
 </x-master-layout>

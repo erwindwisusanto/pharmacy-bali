@@ -2,8 +2,8 @@
 
 return [
     "banner_txt_normal" => "Pharmacy Bali",
-    "banner_txt_bold" => "Your Trusted Online Pharmacy!",
-    "banner_txt_1" => "Get Your Medications Delivered to Your Doorstep",
+    "banner_txt_bold" => "24/7 Online Pharmacy Apotek Delivery",
+    "banner_txt_1" => "Order your medications online and get fast delivery to your hotel or villa in Bali. Available 24/7 for your convenience",
     "text_button" => "Order Now",
     "section_2" => [
         "header_1" => "Why Choose",
@@ -17,8 +17,7 @@ return [
         "mark" => "Great selection of products and very user-friendly website."
     ],
     "footer" => [
-        "klinik" => "Clinic Cepat Sehat",
-        "text_1" => "is a clinic registered under the laws of Indonesia with the registration number 04102100035090001.",
-        "text_2" => "Enjoy our homecare service from the comfort of your home. We are also available offline at:",
+        "text_1" => "Our pharmacy delivery is brought to user through Clinic Cepat Sehat.",
+        "text_2" => "Enjoy our medicine delivery service from the comfort of your home. We are also available at:",
     ]
 ];

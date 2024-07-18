@@ -2,8 +2,8 @@
 
 return [
     "banner_txt_normal" => "Bali Farmasi",
-    "banner_txt_bold" => "Apotek Online Terpercaya",
-    "banner_txt_1" => "Dapatkan Obat Dikirim Langsung ke Rumah Anda",
+    "banner_txt_bold" => "Pengiriman Apotek Online 24/7",
+    "banner_txt_1" => "Dapatkan Obat Anda dengan Mudah. Pesan obat secara online dan nikmati pengiriman cepat ke hotel atau vila Anda di Bali. Layanan kami tersedia 24/7 untuk kenyamanan Anda.",
     "text_button" => "Pesan Sekarang",
     "section_2" => [
         "header_1" => "Mengapa Memilih",
@@ -17,8 +17,7 @@ return [
         "mark" => "Banyak pilihan produk dan situs web yang sangat ramah pengguna."
     ],
     "footer" => [
-        "klinik" => "Klinik Cepat Sehat",
-        "text_1" => "adalah klinik yang terdaftar di bawah hukum Indonesia dengan nomor registrasi 04102100035090001.",
-        "text_2" => "Nikmati layanan homecare kami dari rumah Anda. Kami juga tersedia secara offline di:",
+        "text_1" => "Layanan pengiriman obat kami disediakan oleh Klinik Cepat Sehat.",
+        "text_2" => "Rasakan kemudahan layanan pengiriman obat langsung ke depan pintu Anda. Kami juga tersedia di:",
     ]
 ];
