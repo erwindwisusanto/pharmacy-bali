@@ -17,14 +17,14 @@
                         {{__('index.footer.text_2')}}
                     </p>
                     <div class="row g-3">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <ul>
                                 <li>
-                                    <h6>Pharmacy Apotek 24/7</h6>
+                                    <h6>Pharmacy Apotek 24/7 Seminyak</h6>
                                     <p class="mb-0 fs-14">
-                                        Jl. Jantuk Angsa Desa No.20, Pererenan, Kec. Mengwi, Kabupaten Badung, Bali 80351
+                                        Jl. Legian No.369 X, Legian, Kuta, Badung Regency, Bali 80361
                                     </p>
-                                    <a href="https://maps.app.goo.gl/Z4DbunLvLAbE3td48" target="_blank"
+                                    <a href="https://maps.app.goo.gl/A4hPnNt7zKB7tU8p9" target="_blank"
                                         class="text-decoration-underline mt-2">
                                         <div class="d-flex align-items-center">
                                             <img src="assets/img/maps-icon.svg" class="me-2" alt="">
@@ -35,10 +35,10 @@
                                 </li>
                             </ul>
                         </div>
-                        {{-- <div class="col-md-4">
+                        <div class="col-md-3">
                             <ul>
                                 <li>
-                                    <h6>Jimbaran</h6>
+                                    <h6>Pharmacy Apotek 24/7 Jimbaran</h6>
                                     <p class="mb-0 fs-14">
                                         Jl. Puri Gading, Jimbaran, South Kuta, Badung Regency, Bali 80361
                                     </p>
@@ -53,24 +53,76 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <ul>
                                 <li>
-                                    <h6>Jakarta</h6>
+                                    <h6>Pharmacy Apotek 24/7 Canggu </h6>
                                     <p class="mb-0 fs-14">
-                                        Jl. Peternakan No. 13, Kel. Tengah, Kec. Kramatjati, Kota Adm. Jakarta
-                                        Timur, DKI Jakarta 13510
+                                        Jl. Raya Canggu No.12, Canggu, Kec. Kuta Utara, Kabupaten Badung, Badung, Bali 80351
                                     </p>
-                                    <a href="https://maps.app.goo.gl/GXcf4eYkS2PxcneL6" target="_blank"
+                                    <a href="https://maps.app.goo.gl/JmcKg5kFWsdQPVnu5" target="_blank"
                                         class="text-decoration-underline mt-2">
                                         <div class="d-flex align-items-center">
                                             <img src="assets/img/maps-icon.svg" class="me-2" alt="">
-                                            <span class="fw-bold fs-14 text-white">What Patients Are Saying!</span>
+                                            <span class="fw-bold fs-14 text-white">See Our Patient Experiences !</span>
                                         </div>
                                     </a>
                                 </li>
                             </ul>
-                        </div> --}}
+                        </div>
+                        <div class="col-md-3">
+                            <ul>
+                                <li>
+                                    <h6>Pharmacy Apotek 24/7 Sanur</h6>
+                                    <p class="mb-0 fs-14">
+                                        Jl. Batur Sari No.33, Sanur Kauh, Denpasar Selatan, Kota Denpasar, Bali 80228
+                                    </p>
+                                    <a href="https://maps.app.goo.gl/63Ls1VN8p8khiHW37?g_st=ic" target="_blank"
+                                        class="text-decoration-underline mt-2">
+                                        <div class="d-flex align-items-center">
+                                            <img src="assets/img/maps-icon.svg" class="me-2" alt="">
+                                            <span class="fw-bold fs-14 text-white">Read Our Top Reviews!</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <ul>
+                                <li>
+                                    <h6>Pharmacy Apotek 24/7 Umalas</h6>
+                                    <p class="mb-0 fs-14">
+                                        Jl. Umalas 1 No.6, Kerobokan Kelod, Kec. Kuta Utara, Kabupaten Badung, Bali 80361
+                                    </p>
+                                    <a href="https://maps.app.goo.gl/EqiKuhShnbneW4Wh8?g_st=ic" target="_blank"
+                                        class="text-decoration-underline mt-2">
+                                        <div class="d-flex align-items-center">
+                                            <img src="assets/img/maps-icon.svg" class="me-2" alt="">
+                                            <span class="fw-bold fs-14 text-white">Explore Our Stellar Ratings!</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul>
+                                <li>
+                                    <h6>Pharmacy Apotek 24/7 Pererenan</h6>
+                                    <p class="mb-0 fs-14">
+                                        Jl. Jantuk Angsa Desa No.20, Pererenan, Kec. Mengwi, Kabupaten Badung, Bali 80351
+                                    </p>
+                                    <a href="https://maps.app.goo.gl/fRJuxZEuW6gAxxV97?g_st=ic" target="_blank"
+                                        class="text-decoration-underline mt-2">
+                                        <div class="d-flex align-items-center">
+                                            <img src="assets/img/maps-icon.svg" class="me-2" alt="">
+                                            <span class="fw-bold fs-14 text-white">Check Out Patient Reviews!</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
