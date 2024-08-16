@@ -19,3 +19,7 @@ Route::group(['middleware' => 'web'], function () {
 Route::post('/save-visit-count', [MainController::class, 'saveVisitCount'])->name('visit-count')->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
 Route::post('/save-click-count', [MainController::class, 'saveClickCount'])->name('click-count');
 Route::get('/wa-wording', [MainController::class, 'getWaWording'])->name('get-wa-wording');
+
+// SHOP
+
+// Route::get('/shop')
