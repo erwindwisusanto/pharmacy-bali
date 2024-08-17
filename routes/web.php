@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
 Route::view("/", "index")->name("index");
@@ -21,5 +22,4 @@ Route::post('/save-click-count', [MainController::class, 'saveClickCount'])->nam
 Route::get('/wa-wording', [MainController::class, 'getWaWording'])->name('get-wa-wording');
 
 // SHOP
-
-// Route::get('/shop')
+Route::get('/shop', [ShopController::class, 'index'])->name('view_shop');
