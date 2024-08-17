@@ -1,12 +1,16 @@
 <div class="col">
-  <div class="card card-product">
+  <div class="card card-product"
+    onclick="openDatailProduct(this)"
+    data-product-name="{{ $productName }}"
+    data-category="{{ $category }}"
+    data-price="{{ $price }}"
+    >
      <div class="card-body">
         <div class="text-center position-relative">
           <div class="position-absolute top-0 start-0">
             <span class="badge bg-danger">Sale</span>
          </div>
          <a href="shop-single.html">
-            <!-- img -->
             <img src="../assets/images/products/product-img-1.jpg" alt="{{ $productName }}" class="mb-3 img-fluid" />
          </a>
         </div>
