@@ -17,4 +17,15 @@ class ShopController extends Controller
   {
     return view('shop.index');
   }
+
+  public function Products()
+  {
+    $products = $this->shopService->GetProducts();
+
+    if (empty($products)) {
+      return response()->json([]);
+    }
+
+    return response()->json(['data' => $products]);
+  }
 }

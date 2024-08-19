@@ -18,6 +18,7 @@
     <link href="{{ asset('assets/shop/libs/simplebar/dist/simplebar.min.css') }}" rel="stylesheet" />
 
     <link rel="stylesheet" href="{{ asset('assets/shop/css/theme.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/shop/css/custom.css') }}" />
   </head>
   <body>
     <x-shop-header/>
@@ -30,6 +31,7 @@
     <script src="{{ asset('assets/shop/libs/simplebar/dist/simplebar.min.js') }}"></script>
 
     <script src="{{ asset('assets/shop/js/theme.min.js') }}"></script>
+    <script src="{{ asset('assets/shop/js/function.js') }}"></script>
 
     <script src="{{ asset('assets/shop/js/vendors/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/shop/libs/slick-carousel/slick/slick.min.js') }}"></script>

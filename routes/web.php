@@ -25,3 +25,4 @@ Route::get('/wa-wording', [MainController::class, 'getWaWording'])->name('get-wa
 
 // SHOP
 Route::get('/shop', [ShopController::class, 'index'])->name('view_shop');
+Route::get('products', [ShopController::class, 'Products'])->name('products');

@@ -8,22 +8,22 @@
            <div class="row">
               <div class="col-lg-6">
                  <div class="product productModal" id="productModal">
-                    <div class="zoom" onmousemove="zoom(event)" style="background-image: url(../assets/images/products/product-single-img-1.jpg)">
-                       <img src="../assets/images/products/product-single-img-1.jpg" alt="" />
+                    <div class="zoom" onmousemove="zoom(event)" style="#">
+                       <img src="#" alt="" />
                     </div>
                     <div>
-                       <div class="zoom" onmousemove="zoom(event)" style="background-image: url(../assets/images/products/product-single-img-2.jpg)">
-                          <img src="../assets/images/products/product-single-img-2.jpg" alt="" />
+                       <div class="zoom" onmousemove="zoom(event)" style="#">
+                          <img src="#" alt="" />
                        </div>
                     </div>
                     <div>
-                       <div class="zoom" onmousemove="zoom(event)" style="background-image: url(../assets/images/products/product-single-img-3.jpg)">
-                          <img src="../assets/images/products/product-single-img-3.jpg" alt="" />
+                       <div class="zoom" onmousemove="zoom(event)" style="#">
+                          <img src="#" alt="" />
                        </div>
                     </div>
                     <div>
-                       <div class="zoom" onmousemove="zoom(event)" style="background-image: url(../assets/images/products/product-single-img-4.jpg)">
-                          <img src="../assets/images/products/product-single-img-4.jpg" alt="" />
+                       <div class="zoom" onmousemove="zoom(event)" style="#">
+                          <img src="#" alt="" />
                        </div>
                     </div>
                  </div>
@@ -31,22 +31,22 @@
                     <div class="thumbnails row g-3" id="productModalThumbnails">
                        <div class="col-3" class="tns-nav-active">
                           <div class="thumbnails-img">
-                             <img src="../assets/images/products/product-single-img-1.jpg" alt="" />
+                             <img src="#" alt="" />
                           </div>
                        </div>
                        <div class="col-3">
                           <div class="thumbnails-img">
-                             <img src="../assets/images/products/product-single-img-2.jpg" alt="" />
+                             <img src="#" alt="" />
                           </div>
                        </div>
                        <div class="col-3">
                           <div class="thumbnails-img">
-                             <img src="../assets/images/products/product-single-img-3.jpg" alt="" />
+                             <img src="#" alt="" />
                           </div>
                        </div>
                        <div class="col-3">
                           <div class="thumbnails-img">
-                             <img src="../assets/images/products/product-single-img-4.jpg" alt="" />
+                             <img src="#" alt="" />
                           </div>
                        </div>
                     </div>

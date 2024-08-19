@@ -11,7 +11,7 @@
             <span class="badge bg-danger">Sale</span>
          </div>
          <a href="shop-single.html">
-            <img src="../assets/images/products/product-img-1.jpg" alt="{{ $productName }}" class="mb-3 img-fluid" />
+            <img src="https://freshcart.codescandy.com/assets/images/products/product-img-16.jpg" alt="{{ $productName }}" class="mb-3 img-fluid" />
          </a>
         </div>
         <div class="text-small mb-1">
