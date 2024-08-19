@@ -4,6 +4,8 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
+
 Route::view("/", "index")->name("index");
 
 Route::get('language/{locale}', function ($locale) {
