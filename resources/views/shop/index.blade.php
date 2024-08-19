@@ -68,7 +68,9 @@
      </div>
   </div>
 </section>
+{{-- MODAL --}}
 <x-shop-view-product-modal/>
+<x-cart-modal/>
 </x-shop-layout>
 
 <script>
