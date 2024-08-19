@@ -26,20 +26,8 @@
                  <div class="ps-lg-8 mt-6 mt-lg-0">
                     <a href="#!" class="mb-4 d-block">Bakery Biscuits</a>
                     <h2 class="mb-1 h1" id="product-name"></h2>
-                    <div class="mb-4">
-                       <small class="text-warning">
-                          <i class="bi bi-star-fill"></i>
-                          <i class="bi bi-star-fill"></i>
-                          <i class="bi bi-star-fill"></i>
-                          <i class="bi bi-star-fill"></i>
-                          <i class="bi bi-star-half"></i>
-                       </small>
-                       <a href="#" class="ms-2">(30 reviews)</a>
-                    </div>
                     <div class="fs-4">
                        <span class="fw-bold text-dark" id="product-price"></span>
-                       {{-- <span class="text-decoration-line-through text-muted"></span> --}}
-                       {{-- <span><small class="fs-6 ms-2 text-danger">26% Off</small></span> --}}
                     </div>
                     <hr class="my-6" />
                     <div class="mb-4">
