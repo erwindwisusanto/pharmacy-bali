@@ -60,7 +60,6 @@
   </div>
 </section>
 <x-shop-view-product-modal/>
-<x-cart-modal/>
 </x-shop-layout>
 
 <script>
@@ -69,12 +68,20 @@
   const quickViewProductModel = $('#quickViewModal');
   const productCube = $(`#product_cube`);
 
+  const addToCart = (product) => {
+    const price = product.getAttribute('data-price');
+    const productName = product.getAttribute('data-product-name')
+    const category = product.getAttribute('data-category');
+  }
+
   const openDatailProduct = (product) => {
     const price = product.getAttribute('data-price');
     const productName = product.getAttribute('data-product-name')
     const category = product.getAttribute('data-category');
 
     $(`#product-price`).text(price);
+    $(`#product-name`).text(productName);
+
     quickViewProductModel.modal('show');
   }
 

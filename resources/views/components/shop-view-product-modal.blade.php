@@ -8,45 +8,15 @@
            <div class="row">
               <div class="col-lg-6">
                  <div class="product productModal" id="productModal">
-                    <div class="zoom" onmousemove="zoom(event)" style="#">
-                       <img src="#" alt="" />
-                    </div>
-                    <div>
-                       <div class="zoom" onmousemove="zoom(event)" style="#">
-                          <img src="#" alt="" />
-                       </div>
-                    </div>
-                    <div>
-                       <div class="zoom" onmousemove="zoom(event)" style="#">
-                          <img src="#" alt="" />
-                       </div>
-                    </div>
-                    <div>
-                       <div class="zoom" onmousemove="zoom(event)" style="#">
-                          <img src="#" alt="" />
-                       </div>
+                    <div class="zoom" onmousemove="zoom(event)" style="background-image: url(https://freshcart.codescandy.com/assets/images/products/product-img-16.jpg)">
+                       <img src="https://freshcart.codescandy.com/assets/images/products/product-img-16.jpg" alt="" />
                     </div>
                  </div>
                  <div class="product-tools">
                     <div class="thumbnails row g-3" id="productModalThumbnails">
                        <div class="col-3" class="tns-nav-active">
                           <div class="thumbnails-img">
-                             <img src="#" alt="" />
-                          </div>
-                       </div>
-                       <div class="col-3">
-                          <div class="thumbnails-img">
-                             <img src="#" alt="" />
-                          </div>
-                       </div>
-                       <div class="col-3">
-                          <div class="thumbnails-img">
-                             <img src="#" alt="" />
-                          </div>
-                       </div>
-                       <div class="col-3">
-                          <div class="thumbnails-img">
-                             <img src="#" alt="" />
+                             <img src="https://freshcart.codescandy.com/assets/images/products/product-img-16.jpg" alt="" />
                           </div>
                        </div>
                     </div>
@@ -55,7 +25,7 @@
               <div class="col-lg-6">
                  <div class="ps-lg-8 mt-6 mt-lg-0">
                     <a href="#!" class="mb-4 d-block">Bakery Biscuits</a>
-                    <h2 class="mb-1 h1">Napolitanke Ljesnjak</h2>
+                    <h2 class="mb-1 h1" id="product-name"></h2>
                     <div class="mb-4">
                        <small class="text-warning">
                           <i class="bi bi-star-fill"></i>
@@ -67,7 +37,7 @@
                        <a href="#" class="ms-2">(30 reviews)</a>
                     </div>
                     <div class="fs-4">
-                       <span class="fw-bold text-dark" id="product-price">$32</span>
+                       <span class="fw-bold text-dark" id="product-price"></span>
                        {{-- <span class="text-decoration-line-through text-muted"></span> --}}
                        {{-- <span><small class="fs-6 ms-2 text-danger">26% Off</small></span> --}}
                     </div>

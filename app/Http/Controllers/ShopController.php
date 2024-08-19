@@ -18,6 +18,11 @@ class ShopController extends Controller
     return view('shop.index');
   }
 
+  public function cart()
+  {
+    return view('shop.cart');
+  }
+
   public function Products()
   {
     $products = $this->shopService->GetProducts();
