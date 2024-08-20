@@ -1,33 +1,30 @@
 <div class="col">
-  <div class="card card-product">
+  <div class="card card-product" style="background-color: #ECF7F7; border: none;">
      <div class="card-body">
         <div class="text-center position-relative">
-          <div class="position-absolute top-0 start-0">
-            <span class="badge bg-danger">Sale</span>
-         </div>
          <a
           onclick="openDatailProduct(this)"
           data-product-name="{{ $productName }}"
           data-category="{{ $category }}"
           data-price="{{ $price }}"
          >
-          <img src="https://freshcart.codescandy.com/assets/images/products/product-img-16.jpg" alt="{{ $productName }}" class="mb-3 img-fluid" />
+          <img src="{{ asset('assets/shop/img/obat.png') }}" alt="{{ $productName }}" class="mb-3 img-fluid" />
          </a>
         </div>
+        <h2 class="fs-6"><a class="text-inherit text-decoration-none" style="color: #2F2D2C;">{{ $productName }}</a></h2>
         <div class="text-small mb-1">
-           <a href="#!" class="text-decoration-none text-muted"><small>{{ $category }}</small></a>
+           <a href="#!" class="text-decoration-none text-muted"><small>15 ML</small></a>
         </div>
-        <h2 class="fs-6"><a class="text-inherit text-decoration-none">{{ $productName }}</a></h2>
         <div class="d-flex justify-content-between align-items-center mt-3">
            <div>
-              <span class="text-dark">{{ $price }}</span>
+              <span style="color: #464646; font-weight: 600;">{{ $price }}</span>
            </div>
            <div>
               <a onclick="addToCart(this)"
                 data-product-name="{{ $productName }}"
                 data-category="{{ $category }}"
                 data-price="{{ $price }}"
-                class="btn btn-primary btn-sm">
+                class="btn btn-primary btn-sm d-flex align-items-center" style="background-color: #00B2AE; border: none;">
                  <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -42,7 +39,7 @@
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                  </svg>
-                 Add
+                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
               </a>
            </div>
         </div>

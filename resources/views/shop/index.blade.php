@@ -3,23 +3,21 @@
     <div class="container">
        <div class="row">
           <div class="col-12">
-             <div class="bg-light d-lg-flex justify-content-between align-items-center py-6 py-lg-3 px-8 text-center text-lg-start rounded">
-                <div class="d-lg-flex align-items-center">
-                   <img src="#" alt="" class="img-fluid" />
-
-                   <div class="ms-lg-4">
-                      <h1 class="fs-2 mb-1">Welcome to Pharmacy Bali</h1>
-                      <span>
-                         Download the app get free food &
-                         <span class="text-primary">$30</span>
-                         off on your first order.
-                      </span>
-                   </div>
-                </div>
-                <div class="mt-3 mt-lg-0">
-                   <a href="#" class="btn btn-dark">Download FreshCart App</a>
-                </div>
-             </div>
+            <div class="input-group form-search">
+              <span class="input-group-text" id="basic-addon2"
+                style="background: none; border-right: none;"
+              >
+              <i class="bi bi-search"></i>
+              </span>
+              <input
+              type="text"
+              class="form-control"
+              placeholder="Search ..."
+              aria-label="Default"
+              aria-describedby="inputGroup-sizing-default"
+              style="background: none; border-left: none;"
+              />
+            </div>
           </div>
        </div>
     </div>
@@ -68,10 +66,37 @@
   const quickViewProductModel = $('#quickViewModal');
   const productCube = $(`#product_cube`);
 
-  const addToCart = (product) => {
-    const price = product.getAttribute('data-price');
-    const productName = product.getAttribute('data-product-name')
-    const category = product.getAttribute('data-category');
+	const addToCart = (product) => {
+
+    const spinner = product.querySelector('.spinner-border');
+    const svgIcon = product.querySelector('svg');
+
+    spinner.classList.remove('d-none');
+    svgIcon.classList.add('d-none');
+    product.classList.add('disabled');
+
+   	const price = product.getAttribute('data-price');
+   	const productName = product.getAttribute('data-product-name')
+   	const category = product.getAttribute('data-category');
+
+     const cartItem = {
+      product_name: productName,
+      product_price: price,
+      product_category: category
+    };
+
+    let carts = JSON.parse(localStorage.getItem('cart')) || [];
+
+    setTimeout(() => {
+
+      carts.push(cartItem);
+      localStorage.setItem('cart', JSON.stringify(carts));
+
+      spinner.classList.add('d-none');
+      product.classList.remove('disabled');
+      svgIcon.classList.remove('d-none');
+
+    }, 700);
   }
 
   const openDatailProduct = (product) => {
