@@ -8,15 +8,15 @@
            <div class="row">
               <div class="col-lg-6">
                  <div class="product productModal" id="productModal">
-                    <div class="zoom" onmousemove="zoom(event)" style="background-image: url(https://freshcart.codescandy.com/assets/images/products/product-img-16.jpg)">
-                       <img src="https://freshcart.codescandy.com/assets/images/products/product-img-16.jpg" alt="" />
+                    <div>
+                       <img id="product-img" style="width: 45px;"/>
                     </div>
                  </div>
                  <div class="product-tools">
                     <div class="thumbnails row g-3" id="productModalThumbnails">
                        <div class="col-3" class="tns-nav-active">
                           <div class="thumbnails-img">
-                             <img src="https://freshcart.codescandy.com/assets/images/products/product-img-16.jpg" alt="" />
+                             <img src="" alt="" />
                           </div>
                        </div>
                     </div>

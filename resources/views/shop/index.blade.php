@@ -102,12 +102,13 @@
   const openDatailProduct = (product) => {
     const price = product.getAttribute('data-price');
     const productName = product.getAttribute('data-product-name')
-    const category = product.getAttribute('data-category');
     const type = product.getAttribute('data-type');
+    const img = product.getAttribute('data-img');
 
     $(`#product-price`).text(price);
     $(`#product-name`).text(productName);
     $(`#product-type`).text(type);
+    $('#product-img').attr('src', img);
 
     quickViewProductModel.modal('show');
   }

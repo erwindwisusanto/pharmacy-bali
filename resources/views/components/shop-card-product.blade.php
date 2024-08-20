@@ -7,6 +7,7 @@
           data-product-id="{{ $productId }}"
           data-product-name="{{ $productName }}"
           data-type="{{ $type }}"
+          data-img="{{ $urlImg }}"
           data-price="{{ $price }}"
          >
           <img src="{{ $urlImg }}" alt="{{ $productName }}" class="mb-3 img-fluid" />
@@ -25,6 +26,7 @@
                 data-product-id="{{ $productId }}"
                 data-product-name="{{ $productName }}"
                 data-type="{{ $type }}"
+                data-img="{{ $urlImg }}"
                 data-price="{{ $price }}"
                 class="btn btn-primary btn-sm d-flex align-items-center" style="background-color: #00B2AE; border: none;">
                  <svg
