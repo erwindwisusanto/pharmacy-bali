@@ -103,12 +103,15 @@
     const price = product.getAttribute('data-price');
     const productName = product.getAttribute('data-product-name')
     const category = product.getAttribute('data-category');
+    const type = product.getAttribute('data-type');
 
     $(`#product-price`).text(price);
     $(`#product-name`).text(productName);
+    $(`#product-type`).text(type);
 
     quickViewProductModel.modal('show');
   }
+
 
   const callbackProducts = (response) => {
     productCube.empty();
@@ -117,7 +120,9 @@
     data.forEach(product => {
       const componentProduct = `
         <x-shop-card-product
-          category="Paracetamol"
+          productId="${product.id}"
+          type="${product.type}"
+          urlImg=${urlImageByType(product.type)}
           productName="${product.name}"
           price="${formatter.format(product.price)}"
         />

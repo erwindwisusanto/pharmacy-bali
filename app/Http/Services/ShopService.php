@@ -12,8 +12,12 @@ class ShopService
       $cacheKey = 'products';
 
       $products = Cache::remember($cacheKey, now()->addHours(1), function () {
-        return DB::table('products')->get();
+        return DB::table('product')->get();
       });
+
+      foreach ($products as $product) {
+				$product->id = encryptId($product->id);
+			}
 
       return $products;
     } catch (\Exception $e) {

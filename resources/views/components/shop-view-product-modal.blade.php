@@ -24,17 +24,12 @@
               </div>
               <div class="col-lg-6">
                  <div class="ps-lg-8 mt-6 mt-lg-0">
-                    <a href="#!" class="mb-4 d-block">Bakery Biscuits</a>
-                    <h2 class="mb-1 h1" id="product-name"></h2>
+                    <a class="mb-4 d-block" style="color: #00B2AE;" id="product-type"></a>
+                    <h2 class="mb-1 h1" id="product-name" style="color: #2F2D2C;"></h2>
                     <div class="fs-4">
-                       <span class="fw-bold text-dark" id="product-price"></span>
+                       <span class="fw-bold" id="product-price" style="color: #464646;"></span>
                     </div>
                     <hr class="my-6" />
-                    <div class="mb-4">
-                       <button type="button" class="btn btn-outline-secondary">250g</button>
-                       <button type="button" class="btn btn-outline-secondary">500g</button>
-                       <button type="button" class="btn btn-outline-secondary">1kg</button>
-                    </div>
                     <div>
                        <div class="input-group input-spinner">
                           <input type="button" value="-" class="button-minus btn btn-sm" data-field="quantity" />
@@ -44,41 +39,13 @@
                     </div>
                     <div class="mt-3 row justify-content-start g-2 align-items-center">
                        <div class="col-lg-4 col-md-5 col-6 d-grid">
-                          <button type="button" class="btn btn-primary">
+                          <button type="button" class="btn btn-primary" style="background-color: #00B2AE; border: none;">
                              <i class="feather-icon icon-shopping-bag me-2"></i>
                              Add to cart
                           </button>
                        </div>
                        <div class="col-md-4 col-5">
                        </div>
-                    </div>
-                    <hr class="my-6" />
-                    <div>
-                       <table class="table table-borderless">
-                          <tbody>
-                             <tr>
-                                <td>Product Code:</td>
-                                <td>FBB00255</td>
-                             </tr>
-                             <tr>
-                                <td>Availability:</td>
-                                <td>In Stock</td>
-                             </tr>
-                             <tr>
-                                <td>Type:</td>
-                                <td>Fruits</td>
-                             </tr>
-                             <tr>
-                                <td>Shipping:</td>
-                                <td>
-                                   <small>
-                                      01 day shipping.
-                                      <span class="text-muted">( Free pickup today)</span>
-                                   </small>
-                                </td>
-                             </tr>
-                          </tbody>
-                       </table>
                     </div>
                  </div>
               </div>

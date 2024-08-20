@@ -12,21 +12,17 @@ class ProductCard extends Component
      * @return void
      */
 
-    public $category;
-    public $categoryUrl;
+    public $type;
     public $productName;
-    public $productUrl;
     public $price;
-    public $addToCartUrl;
+    public $productId;
 
-    public function __construct($category, $categoryUrl, $productName, $productUrl, $price, $addToCartUrl)
+    public function __construct($type, $productName, $price, $productId)
     {
-      $this->category = $category;
-      $this->categoryUrl = $categoryUrl;
+      $this->productId = $productId;
+      $this->type = $type;
       $this->productName = $productName;
-      $this->productUrl = $productUrl;
       $this->price = $price;
-      $this->addToCartUrl = $addToCartUrl;
     }
 
     /**

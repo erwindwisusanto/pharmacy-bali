@@ -4,16 +4,17 @@
         <div class="text-center position-relative">
          <a
           onclick="openDatailProduct(this)"
+          data-product-id="{{ $productId }}"
           data-product-name="{{ $productName }}"
-          data-category="{{ $category }}"
+          data-type="{{ $type }}"
           data-price="{{ $price }}"
          >
-          <img src="{{ asset('assets/shop/img/obat.png') }}" alt="{{ $productName }}" class="mb-3 img-fluid" />
+          <img src="{{ $urlImg }}" alt="{{ $productName }}" class="mb-3 img-fluid" />
          </a>
         </div>
         <h2 class="fs-6"><a class="text-inherit text-decoration-none" style="color: #2F2D2C;">{{ $productName }}</a></h2>
         <div class="text-small mb-1">
-           <a href="#!" class="text-decoration-none text-muted"><small>15 ML</small></a>
+           <a href="#!" class="text-decoration-none text-muted"><small>{{ $type }}</small></a>
         </div>
         <div class="d-flex justify-content-between align-items-center mt-3">
            <div>
@@ -21,8 +22,9 @@
            </div>
            <div>
               <a onclick="addToCart(this)"
+                data-product-id="{{ $productId }}"
                 data-product-name="{{ $productName }}"
-                data-category="{{ $category }}"
+                data-type="{{ $type }}"
                 data-price="{{ $price }}"
                 class="btn btn-primary btn-sm d-flex align-items-center" style="background-color: #00B2AE; border: none;">
                  <svg
