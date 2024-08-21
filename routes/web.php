@@ -27,3 +27,5 @@ Route::get('/wa-wording', [MainController::class, 'getWaWording'])->name('get-wa
 Route::get('/order-medicine', [ShopController::class, 'index'])->name('view_shop');
 Route::get('/cart', [ShopController::class, 'cart'])->name('cart');
 Route::get('products', [ShopController::class, 'Products'])->name('products');
+Route::get('find-nearest-pharmacy', [ShopController::class, 'loadingScreen'])->name('loading_screen_shop');
+Route::get('delivery', [ShopController::class, 'delivery'])->name('delivery');

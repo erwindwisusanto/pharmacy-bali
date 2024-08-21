@@ -33,4 +33,14 @@ class ShopController extends Controller
 
     return response()->json(['data' => $products]);
   }
+
+  public function loadingScreen()
+  {
+    return view('shop.loading');
+  }
+
+  public function delivery()
+  {
+    return view('shop.delivery');
+  }
 }
