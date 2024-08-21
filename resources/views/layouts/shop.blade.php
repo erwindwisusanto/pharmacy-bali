@@ -39,5 +39,33 @@
     <script src="{{ asset('assets/shop/libs/tiny-slider/dist/min/tiny-slider.js') }}"></script>
     <script src="{{ asset('assets/shop/js/vendors/tns-slider.js') }}"></script>
     <script src="{{ asset('assets/shop/js/vendors/zoom.js') }}"></script>
+
+    <script>
+      "use strict";
+
+      const headerIconCart = $(`#header-cart`);
+      const carts = () => {
+        headerIconCart.empty();
+        let totalItems = 0;
+
+        const cart = localStorage.getItem("cart");
+
+        if (cart) {
+          const cartItems = JSON.parse(cart);
+
+          if (Array.isArray(cartItems)) {
+            totalItems = cartItems.length;
+          }
+        }
+
+        headerIconCart.text(totalItems);
+      }
+
+      $(document).ready(function () {
+        setInterval(() => {
+          carts();
+        }, 100);
+      });
+    </script>
   </body>
 </html>

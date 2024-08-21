@@ -9,6 +9,7 @@
           data-type="{{ $type }}"
           data-img="{{ $urlImg }}"
           data-price="{{ $price }}"
+          data-price-native="{{ $priceNative }}"
          >
           <img src="{{ $urlImg }}" alt="{{ $productName }}" class="mb-3 img-fluid" />
          </a>
@@ -28,6 +29,7 @@
                 data-type="{{ $type }}"
                 data-img="{{ $urlImg }}"
                 data-price="{{ $price }}"
+                data-price-native="{{ $priceNative }}"
                 class="btn btn-primary btn-sm d-flex align-items-center" style="background-color: #00B2AE; border: none;">
                  <svg
                     xmlns="http://www.w3.org/2000/svg"

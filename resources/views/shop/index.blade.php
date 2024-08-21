@@ -75,21 +75,35 @@
     svgIcon.classList.add('d-none');
     product.classList.add('disabled');
 
+    const productId = product.getAttribute('data-product-id');
    	const price = product.getAttribute('data-price');
+    const priceNative = product.getAttribute('data-price-native');
    	const productName = product.getAttribute('data-product-name')
-   	const category = product.getAttribute('data-category');
+   	const type = product.getAttribute('data-type');
+    const img = product.getAttribute('data-img')
 
-     const cartItem = {
+    const cartItem = {
+      product_id: productId,
       product_name: productName,
       product_price: price,
-      product_category: category
+      product_price_native: priceNative,
+      product_type: type,
+      product_img: img,
+      quantity: 1
     };
 
     let carts = JSON.parse(localStorage.getItem('cart')) || [];
 
     setTimeout(() => {
 
-      carts.push(cartItem);
+      const existingProductIndex = carts.findIndex(item => item.product_id === productId);
+
+      if (existingProductIndex !== -1) {
+        carts[existingProductIndex].quantity += 1;
+      } else {
+        carts.push(cartItem);
+      }
+
       localStorage.setItem('cart', JSON.stringify(carts));
 
       spinner.classList.add('d-none');
@@ -126,6 +140,7 @@
           urlImg=${urlImageByType(product.type)}
           productName="${product.name}"
           price="${formatter.format(product.price)}"
+          priceNative="${product.price}"
         />
       `;
       productCube.append(componentProduct);
