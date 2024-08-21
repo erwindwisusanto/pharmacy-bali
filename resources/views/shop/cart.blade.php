@@ -18,7 +18,7 @@
     <div class="container">
        <div class="row">
           <div class="col-12">
-             <div class="card py-1 border-0 mb-4">
+             <div class="card py-1 border-0 mb-3">
                 <div>
                    <h1 class="fw-bold">Cart</h1>
                 </div>
@@ -41,7 +41,7 @@
                             <div class="me-auto">
                                <div>Item Total</div>
                             </div>
-                            <span class="item-total-quantity">0</span>
+                            <span class="item-total-quantity fw-bold">0</span>
                          </li>
                          <li class="list-group-item d-flex justify-content-between align-items-start px-0">
                             <div class="me-auto">
@@ -51,9 +51,8 @@
                          </li>
                       </ul>
                    <div class="d-grid mb-1 mt-4">
-                      <button class="btn btn-primary btn-lg d-flex justify-content-between align-items-center" type="submit" style="background-color: #00B2AE; border: none; height: 50px;">
-                         Go to Checkout
-                         <span class="fw-bold checkout-total-price">0</span>
+                      <button class="btn btn-primary btn-lg" type="submit" style="background-color: #00B2AE; border: none; height: 50px;">
+                        Checkout
                       </button>
                    </div>
              </div>
@@ -69,8 +68,8 @@
     return `<li class="list-group-item py-3 ps-0 border-bottom" data-product-id="${productId}">
               <div class="row align-items-center">
                   <div class="col-6 col-md-6 col-lg-7">
-                    <div class="d-flex">
-                        <img src="${productImg}" alt="${productName}" class="icon-shape icon-xxl" />
+                    <div class="d-flex align-items-center">
+                        <img src="${productImg}" alt="${productName}" class="icon-shape icon-xxl"/>
                         <div class="ms-3">
                           <a class="text-inherit">
                               <h6 class="mb-0">${productName}</h6>
@@ -96,7 +95,7 @@
                                       <line x1="14" y1="11" x2="14" y2="17"></line>
                                     </svg>
                                 </span>
-                                <span class="text-muted">Remove</span>
+                                <span style="color: red;">Remove</span>
                               </a>
                           </div>
                         </div>
