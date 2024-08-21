@@ -3,11 +3,11 @@
      <div class="container">
         <div class="row w-100 align-items-center gx-lg-2 gx-0">
            <div class="col-xxl-2 col-lg-3 col-md-6 col-5">
-              <a class="navbar-brand d-none d-lg-block" href="{{ route('view_shop') }}">
+              <a class="navbar-brand d-none d-lg-block" href="{{ route('index') }}">
                  <img src="{{ asset('assets/img/logo.png') }}" alt="pharmacybali" style="width: 95px;"/>
               </a>
               <div class="d-flex justify-content-between w-100 d-lg-none">
-                 <a class="navbar-brand" href="{{ route('view_shop') }}">
+                 <a class="navbar-brand" href="{{ route('index') }}">
                     <img src="{{ asset('assets/img/logo.png') }}" alt="pharmacybali" style="width: 95px;"/>
                  </a>
               </div>
