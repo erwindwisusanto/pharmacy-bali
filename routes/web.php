@@ -29,3 +29,5 @@ Route::get('/cart', [ShopController::class, 'cart'])->name('cart');
 Route::get('products', [ShopController::class, 'Products'])->name('products');
 Route::get('find-nearest-pharmacy', [ShopController::class, 'loadingScreen'])->name('loading_screen_shop');
 Route::get('delivery', [ShopController::class, 'delivery'])->name('delivery');
+Route::get('success', [ShopController::class, 'success'])->name('success');
+Route::post('pay', [ShopController::class, 'pay'])->name('pay')->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);

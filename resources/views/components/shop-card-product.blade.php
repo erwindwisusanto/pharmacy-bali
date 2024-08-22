@@ -3,7 +3,7 @@
      <div class="card-body">
         <div class="text-center position-relative">
          <a
-          onclick="openDatailProduct(this)"
+          {{-- onclick="openDatailProduct(this)" --}}
           data-product-id="{{ $productId }}"
           data-product-name="{{ $productName }}"
           data-type="{{ $type }}"

@@ -54,6 +54,13 @@ return [
             'days' => 14,
         ],
 
+        'qontak' => [
+						'driver' => 'single',
+						'path' => storage_path('logs/qontak.log'),
+						'level' => 'info',
+				],
+
+
         'slack' => [
             'driver' => 'slack',
             'url' => env('LOG_SLACK_WEBHOOK_URL'),

@@ -39,8 +39,9 @@
                                 <a href="{{ route('view_shop') }}" class="btn btn-outline-gray-400 text-muted w-50">
                                     Add Items
                                 </a>
-                                <a href="{{ route('loading_screen_shop') }}" class="btn btn-primary ms-2 w-50" style="background: #00B2AE; border: 1px solid #00B2AE;">
+                                <a onclick="checkout(this)" class="btn btn-primary ms-2 w-50 checkoutbutton" style="background: #00B2AE; border: 1px solid #00B2AE;">
                                     Checkout
+                                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                                 </a>
                             </div>
                         </div>
@@ -188,6 +189,28 @@
             totalQuantity,
             subtotal
         };
+    }
+
+    const checkout = (button) => {
+      const {
+            totalQuantity,
+            subtotal
+        } = getCartSummary();
+
+      $(button).attr("disabled", true).css("background-color", "#01918e");
+      const spinner = button.querySelector('.spinner-border');
+      spinner.classList.remove('d-none');
+
+      if (parseInt(subtotal) != 0) {
+        setTimeout(() => {
+          $(button).attr("disabled", true).css("background-color", "#01918e");
+          spinner.classList.add('d-none');
+
+          window.location.href = "{{ route('loading_screen_shop') }}";
+        }, 1000);
+      } else {
+        return;
+      }
     }
 
     const updateSummary = () => {

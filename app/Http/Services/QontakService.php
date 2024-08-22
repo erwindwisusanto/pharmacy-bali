@@ -2,6 +2,7 @@
 namespace App\Http\Services;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class QontakService
 {
@@ -10,6 +11,7 @@ class QontakService
 
   public function send($data)
   {
+    Log::channel('qontak')->info('[REQUEST]'.json_encode($data));
     try {
       $response = Http::withHeaders([
         'Authorization' => "Bearer {$data['key']}",
@@ -26,9 +28,74 @@ class QontakService
 					'body' => $data['body']
 				]
       ]);
+      Log::channel('qontak')->info('[RESPONSE]'.json_encode($response->body()));
       return true;
     } catch (\Throwable $e) {
+      Log::channel('qontak')->info('[FAILED]'. $e->getMessage());
       return false;
     }
   }
+
+  public function sendWhatsAppMessageCS($name, $age, $phoneNumber, $address, $locationDetails, $note, $items)
+	{
+    $totalPrice = 0;
+    $formattedItems = [];
+    foreach($items as $key => $item) {
+      $totalPrice += $item['product_price_native'] * $item['quantity'];
+      $formattedItems[] = chr(97 + $key) . ". " . $item['product_name'];
+    }
+
+    $itemsText = "";
+    foreach ($formattedItems as $item) {
+      $itemsText .= $item . " ";
+    }
+
+		$data = [
+			'key' => "Nm_1LwjuNGRSuI_b9baeA2UBTZu7KlvL5oB6lmudZbE",
+			'to_number' => "6282110796637",
+			'to_name' => $name,
+			'message_template_id' => "2f401f8c-8ea8-47ee-91d9-371cee6a7b27",
+			'channel_integration_id' => "4f81cdab-3220-44a1-8981-05f163f78b20",
+			'lang_code' => 'en',
+			'body' => [
+				[
+					'key' => '1',
+					'value' => 'patient_name',
+					'value_text' => $name
+				],
+				[
+					'key' => '2',
+					'value' => 'age',
+					'value_text' => $age
+				],
+				[
+					'key' => '3',
+					'value' => 'address',
+					'value_text' => $address
+				],
+				[
+					'key' => '4',
+					'value' => 'location_details',
+					'value_text' => $locationDetails
+				],
+				[
+					'key' => '5',
+					'value' => 'total',
+					'value_text' => $totalPrice
+				],
+				[
+					'key' => '6',
+					'value' => 'items',
+					'value_text' => $itemsText
+        ],
+				[
+					'key' => '7',
+					'value' => 'note',
+					'value_text' => $note
+			  ]
+      ]
+		];
+
+		return $this->send($data);
+	}
 }

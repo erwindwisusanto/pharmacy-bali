@@ -43,4 +43,24 @@ class ShopController extends Controller
   {
     return view('shop.delivery');
   }
+
+  public function success()
+  {
+    return view('shop.success');
+  }
+
+  public function pay(Request $request)
+  {
+    $name = $request->name;
+    $age = $request->age;
+    $phoneNumber = $request->phoneNumber;
+    $address = $request->address;
+    $locationDetails = $request->locationDetails;
+    $note = $request->note;
+    $items = $request->items;
+
+    $reponse = $this->shopService->pay($name, $age, $phoneNumber, $address, $locationDetails, $note, $items);
+
+    return response()->json(['success' => $reponse]);
+  }
 }

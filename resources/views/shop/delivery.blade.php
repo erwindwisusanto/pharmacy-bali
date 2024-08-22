@@ -25,14 +25,14 @@
                                     <div class="col-9 col-lg-8 col-md-8">
                                         <div class="mb-3">
                                             <label for="name" class="form-label">Name</label>
-                                            <input type="text" class="form-control" id="name"
+                                            <input type="text" class="form-control" id="name" name="name"
                                                 placeholder="Budiono Siregar Kapal Lawut" required />
                                         </div>
                                     </div>
                                     <div class="col-3 col-lg-4 col-md-4">
                                         <div class="mb-3">
                                             <label for="age" class="form-label">Age</label>
-                                            <input type="text" class="form-control" id="age" placeholder="23"
+                                            <input type="text" class="form-control" id="age" name="age" placeholder="23"
                                                 required />
                                         </div>
                                     </div>
@@ -40,31 +40,31 @@
                                 <div class="row g-2 mb-3">
                                     <div class="col-12 col-lg-4 col-md-4">
                                         <div class="mb-3">
-                                            <label for="phone-number" class="form-label">Phone number</label>
-                                            <input type="text" class="form-control" id="phone-number"
-                                                placeholder="628211079XXXX" required />
+                                            <label for="phone-number" class="form-label">Phone number <small style="color: red;">*62821107XXX</small></label>
+                                            <input type="text" class="form-control" id="phone-number" name="phone-number"
+                                                placeholder="628211079XXXX" pattern="62[0-9]{9,14}" required />
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-8 col-md-8">
                                         <div class="mb-3">
-                                            <label for="current-place" class="form-label">Address</label>
-                                            <input type="text" class="form-control" id="current-place" placeholder="Sunrise Villa Canggu"
+                                            <label for="address" class="form-label">Address</label>
+                                            <input type="text" class="form-control" id="address" name="address" placeholder="Sunrise Villa Canggu"
                                                 required />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row g-2 mb-3">
                                     <div class="col-12">
-                                        <label for="DeliveryInstructions" class="form-label sr-only">Add location
+                                        <label for="location-details" class="form-label sr-only">Add location
                                             details</label>
-                                        <textarea class="form-control" id="DeliveryInstructions" rows="3"
+                                        <textarea class="form-control" id="location-details" name="location-details" rows="3"
                                             placeholder="Jl. Subak Canggu, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80361"></textarea>
                                     </div>
                                 </div>
                                 <div class="row g-2 mb-3">
                                     <div class="col-12">
-                                        <label for="DeliveryInstructions" class="form-label sr-only">Note</label>
-                                        <textarea class="form-control" id="DeliveryInstructions" rows="3"
+                                        <label for="note" class="form-label sr-only">Note</label>
+                                        <textarea class="form-control" id="note" name="note" rows="3"
                                             placeholder="I have diarrhea and nausea"></textarea>
                                     </div>
                                 </div>
@@ -97,8 +97,9 @@
                                 <a href="{{ route('cart') }}" class="btn btn-outline-gray-400 text-muted w-25">
                                     Back
                                 </a>
-                                <a href="#" class="btn btn-primary ms-2 w-75" style="background: #00B2AE; border: 1px solid #00B2AE;">
+                                <a onclick="pay(this)" class="btn btn-primary ms-2 w-75" style="background: #00B2AE; border: 1px solid #00B2AE;">
                                     Pay
+                                  <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                                 </a>
                             </div>
                         </div>
@@ -110,6 +111,93 @@
 </x-shop-layout>
 <script>
     'use strict';
+
+    const callbackPay = (response) => {
+      if (response.success == true) {
+        setTimeout(function() {
+          window.location.replace('{{ route("success") }}');
+        }, 500);
+      }
+    }
+
+    const validateForm = () => {
+      let isValid = true;
+
+      // Clear previous validation messages
+      $('.invalid-feedback').remove();
+      $('.is-invalid').removeClass('is-invalid');
+
+      // List of required fields
+      const fields = [
+        { id: 'name', label: 'Name' },
+        { id: 'age', label: 'Age' },
+        { id: 'phone-number', label: 'Phone Number' },
+        { id: 'address', label: 'Address' },
+        { id: 'location-details', label: 'Location Details' }
+      ];
+
+      // Iterate through fields to check if they are empty
+      fields.forEach(field => {
+        const value = $(`#${field.id}`).val();
+        if (!value) {
+          isValid = false;
+
+          // Add Bootstrap validation styles and message
+          $(`#${field.id}`).addClass('is-invalid');
+          $(`#${field.id}`).after(`
+            <div class="invalid-feedback">
+              ${field.label} is required.
+            </div>
+          `);
+        }
+      });
+
+      return isValid;
+    };
+
+    const handleInputChange = (event) => {
+      const $input = $(event.target);
+      if ($input.val()) {
+        $input.removeClass('is-invalid');
+        $input.next('.invalid-feedback').remove();
+      }
+    };
+
+    const pay = (button) => {
+
+      if (!validateForm()) {
+        return;
+      }
+
+      $(button).attr("disabled", true).css("background-color", "#01918e");
+      const spinner = button.querySelector('.spinner-border');
+      spinner.classList.remove('d-none');
+
+      const dataRequest = {
+        name: $(`#name`).val(),
+        age: $(`#age`).val(),
+        phoneNumber: $(`#phone-number`).val(),
+        address: $(`#address`).val(),
+        locationDetails: $(`#location-details`).val(),
+        note: $(`#note`).val(),
+        items: JSON.parse(localStorage.getItem('cart')) || [],
+        _token: '{{ csrf_token() }}'
+      }
+
+      setTimeout(() => {
+        $.ajax({
+          type: 'POST',
+          url: '{{ route("pay") }}',
+          data: dataRequest,
+          dataType: 'json',
+          success: callbackPay,
+          complete: function() {
+            $(button).attr("disabled", false).css("background-color", "#00B2AE");
+            spinner.classList.add('d-none');
+          }
+        });
+      }, 1300);
+    }
 
     const componentItems = (productImg, productName, productType, priceNative, quantity) => {
         return `<li class="list-group-item px-4 py-3">
@@ -176,5 +264,16 @@
     $(document).ready(function() {
         getCartItems();
         updateSummary();
+
+        $('#phone-number').on('input', function() {
+          let phoneNumber = $(this).val();
+
+          if (!phoneNumber.startsWith('62')) {
+            phoneNumber = '62' + phoneNumber.replace(/^0+/, '');
+            $(this).val(phoneNumber);
+          }
+        });
+
+        $('#name, #age, #phone-number, #address, #location-details').on('input', handleInputChange);
     });
 </script>
