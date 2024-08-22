@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
 
 Route::view("/", "index")->name("index");
 
@@ -19,3 +22,10 @@ Route::group(['middleware' => 'web'], function () {
 Route::post('/save-visit-count', [MainController::class, 'saveVisitCount'])->name('visit-count')->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
 Route::post('/save-click-count', [MainController::class, 'saveClickCount'])->name('click-count');
 Route::get('/wa-wording', [MainController::class, 'getWaWording'])->name('get-wa-wording');
+
+// SHOP
+Route::get('/order-medicine', [ShopController::class, 'index'])->name('view_shop');
+Route::get('/cart', [ShopController::class, 'cart'])->name('cart');
+Route::get('products', [ShopController::class, 'Products'])->name('products');
+Route::get('find-nearest-pharmacy', [ShopController::class, 'loadingScreen'])->name('loading_screen_shop');
+Route::get('delivery', [ShopController::class, 'delivery'])->name('delivery');
