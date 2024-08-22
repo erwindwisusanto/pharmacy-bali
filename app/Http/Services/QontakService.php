@@ -52,7 +52,7 @@ class QontakService
 
 		$data = [
 			'key' => "Nm_1LwjuNGRSuI_b9baeA2UBTZu7KlvL5oB6lmudZbE",
-			'to_number' => "6282110796637",
+			'to_number' => "6282115353192",
 			'to_name' => $name,
 			'message_template_id' => "2f401f8c-8ea8-47ee-91d9-371cee6a7b27",
 			'channel_integration_id' => "4f81cdab-3220-44a1-8981-05f163f78b20",
@@ -81,7 +81,7 @@ class QontakService
 				[
 					'key' => '5',
 					'value' => 'total',
-					'value_text' => $totalPrice
+					'value_text' => number_format($totalPrice, 0)
 				],
 				[
 					'key' => '6',

@@ -123,11 +123,9 @@
     const validateForm = () => {
       let isValid = true;
 
-      // Clear previous validation messages
       $('.invalid-feedback').remove();
       $('.is-invalid').removeClass('is-invalid');
 
-      // List of required fields
       const fields = [
         { id: 'name', label: 'Name' },
         { id: 'age', label: 'Age' },
@@ -136,13 +134,11 @@
         { id: 'location-details', label: 'Location Details' }
       ];
 
-      // Iterate through fields to check if they are empty
       fields.forEach(field => {
         const value = $(`#${field.id}`).val();
         if (!value) {
           isValid = false;
 
-          // Add Bootstrap validation styles and message
           $(`#${field.id}`).addClass('is-invalid');
           $(`#${field.id}`).after(`
             <div class="invalid-feedback">
@@ -194,6 +190,7 @@
           complete: function() {
             $(button).attr("disabled", false).css("background-color", "#00B2AE");
             spinner.classList.add('d-none');
+            localStorage.clear();
           }
         });
       }, 1300);

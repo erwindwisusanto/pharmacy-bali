@@ -209,6 +209,7 @@
           window.location.href = "{{ route('loading_screen_shop') }}";
         }, 1000);
       } else {
+        spinner.classList.add('d-none');
         return;
       }
     }

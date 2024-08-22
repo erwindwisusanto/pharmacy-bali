@@ -11,7 +11,7 @@
                     <p>
                         {{__('index.banner_txt_1')}}
                     </p>
-                    <a href="{{ route('view_shop') }}" class="btn btn-warning fs-14">{{__('index.text_button')}}
+                    <a href="" class="btn btn-warning fs-14">{{__('index.text_button')}}
                     </a>
                 </div>
             </div>
