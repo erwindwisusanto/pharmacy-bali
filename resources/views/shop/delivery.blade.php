@@ -38,13 +38,6 @@
                                     </div>
                                 </div>
                                 <div class="row g-2 mb-3">
-                                    <div class="col-12 col-lg-4 col-md-4">
-                                        <div class="mb-3">
-                                            <label for="phone-number" class="form-label">Phone number <small style="color: red;">*62821107XXX</small></label>
-                                            <input type="text" class="form-control" id="phone-number" name="phone-number"
-                                                placeholder="628211079XXXX" pattern="62[0-9]{9,14}" required />
-                                        </div>
-                                    </div>
                                     <div class="col-12 col-lg-8 col-md-8">
                                         <div class="mb-3">
                                             <label for="address" class="form-label">Address</label>
@@ -129,7 +122,6 @@
       const fields = [
         { id: 'name', label: 'Name' },
         { id: 'age', label: 'Age' },
-        { id: 'phone-number', label: 'Phone Number' },
         { id: 'address', label: 'Address' },
         { id: 'location-details', label: 'Location Details' }
       ];
@@ -172,7 +164,6 @@
       const dataRequest = {
         name: $(`#name`).val(),
         age: $(`#age`).val(),
-        phoneNumber: $(`#phone-number`).val(),
         address: $(`#address`).val(),
         locationDetails: $(`#location-details`).val(),
         note: $(`#note`).val(),
@@ -292,15 +283,6 @@
         validationLocalStorage();
         getCartItems();
         updateSummary();
-
-        $('#phone-number').on('input', function() {
-          let phoneNumber = $(this).val();
-
-          if (!phoneNumber.startsWith('62')) {
-            phoneNumber = '62' + phoneNumber.replace(/^0+/, '');
-            $(this).val(phoneNumber);
-          }
-        });
 
         $('#name, #age, #phone-number, #address, #location-details').on('input', handleInputChange);
     });
