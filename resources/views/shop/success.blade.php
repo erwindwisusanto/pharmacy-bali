@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Find the Nearest Pharmacy</title>
+  <title>Success</title>
   <link href="{{ asset('assets/shop/css/theme.min.css') }}" rel="stylesheet">
   <style>
     body, html {

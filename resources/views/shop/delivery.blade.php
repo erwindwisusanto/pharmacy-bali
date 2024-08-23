@@ -281,7 +281,15 @@
         $('.checkout-total-price').text(`${formatter.format(subtotal)}`);
     };
 
+    const validationLocalStorage = () => {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if (cart.length === 0) {
+        window.location.replace('{{ route("view_shop") }}');
+      }
+    }
+
     $(document).ready(function() {
+        validationLocalStorage();
         getCartItems();
         updateSummary();
 
