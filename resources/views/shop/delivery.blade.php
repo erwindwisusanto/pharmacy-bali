@@ -192,6 +192,7 @@
         spinner.classList.add('d-none');
         localStorage.clear();
 
+        window.location.replace('{{ route("success") }}');
       }, 1300);
     }
 
