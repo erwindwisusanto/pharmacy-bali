@@ -1,5 +1,5 @@
 <x-shop-layout>
-    <section class="mb-lg-14 mb-8 mt-8">
+    <section class="mb-lg-14 mb-8" style="margin-top: 7rem;">
         <div class="container">
             <div class="row">
                 <div class="col-12">

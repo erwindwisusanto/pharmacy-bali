@@ -23,9 +23,13 @@ class ShopController extends Controller
     return view('shop.cart');
   }
 
-  public function Products()
+  public function Products(Request $request)
   {
-    $products = $this->shopService->GetProducts();
+    $searchProducts = $request->search_products;
+    $sortPrice = $request->sort_price;
+    $filterCategory = $request->category;
+
+    $products = $this->shopService->GetProducts($searchProducts, $sortPrice, $filterCategory);
 
     if (empty($products)) {
       return response()->json([]);

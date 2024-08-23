@@ -1,25 +1,6 @@
 <x-shop-layout>
-  <section class="mt-8">
+  <section style="margin-top: 7rem;">
     <div class="container">
-       <div class="row">
-          <div class="col-12">
-            <div class="input-group form-search">
-              <span class="input-group-text" id="basic-addon2"
-                style="background: none; border-right: none;"
-              >
-              <i class="bi bi-search"></i>
-              </span>
-              <input
-              type="text"
-              class="form-control"
-              placeholder="Search ..."
-              aria-label="Default"
-              aria-describedby="inputGroup-sizing-default"
-              style="background: none; border-left: none;"
-              />
-            </div>
-          </div>
-       </div>
     </div>
  </section>
  <section class="mt-8 mb-lg-14 mb-8">
@@ -29,18 +10,45 @@
            <div class="d-lg-flex justify-content-between align-items-center">
               <div class="d-md-flex justify-content-between align-items-center">
                  <div class="d-flex mt-2 mt-lg-0">
+                    <div class="me-2 flex-grow-1">
+                      <select class="form-select" id="categoryFilter">
+                        <option value >All</option>
+                        <option value="tablet">Tablet</option>
+                        <option value="cream">Cream</option>
+                        <option value="syrup">Syrup</option>
+                      </select>
+                    </div>
                     <div>
-                       <select class="form-select">
-                          <option selected>Sort by: Featured</option>
-                          <option value="Low to High">Price: Low to High</option>
-                          <option value="High to Low">Price: High to Low</option>
-                          <option value="Release Date">Release Date</option>
-                          <option value="Avg. Rating">Avg. Rating</option>
+                       <select class="form-select" id="sortPrice">
+                          <option selected disabled>Sort by Price</option>
+                          <option value="low_to_high">Lowest Price</option>
+                          <option value="high_to_low">Highest Price</option>
                        </select>
                     </div>
                  </div>
               </div>
            </div>
+           <div class="row mt-4">
+            <div class="col-12 col-lg-4 col-md-4">
+              <div class="input-group form-search">
+                <span class="input-group-text" id="basic-addon2"
+                  style="background: none; border-right: none;"
+                >
+                <i class="bi bi-search"></i>
+                </span>
+                <input
+                type="text"
+                class="form-control"
+                placeholder="Search ..."
+                aria-label="Default"
+                id="searchInput"
+                name="searchInput"
+                aria-describedby="inputGroup-sizing-default"
+                style="background: none; border-left: none;"
+                />
+              </div>
+            </div>
+          </div>
            <div class="row g-4 row-cols-lg-5 row-cols-2 row-cols-md-3 mt-2" id="product_cube">
             @for ($i = 0; $i < 10; $i++)
               <div class="col">
@@ -132,26 +140,33 @@
     productCube.empty();
     const data = response?.data || [];
 
-    data.forEach(product => {
-      const componentProduct = `
-        <x-shop-card-product
-          productId="${product.id}"
-          type="${product.type}"
-          urlImg=${urlImageByType(product.type)}
-          productName="${product.name}"
-          price="${formatter.format(product.price)}"
-          priceNative="${product.price}"
-        />
-      `;
-      productCube.append(componentProduct);
-    });
+    if (data.length !== 0) {
+      data.forEach(product => {
+        const componentProduct = `
+          <x-shop-card-product
+            productId="${product.id}"
+            type="${product.type}"
+            urlImg=${urlImageByType(product.type)}
+            productName="${product.name}"
+            price="${formatter.format(product.price)}"
+            priceNative="${product.price}"
+          />
+        `;
+        productCube.append(componentProduct);
+      });
+    } else {
+      const noProductsMessage = `<p>No products found.</p>`;
+      productCube.append(noProductsMessage);
+    }
+
   }
 
-  const products = () => {
+  const products = (filterSearch = '', sortPrice = '', category = '') => {
     $.ajax({
       url: `{{ route('products') }}`,
       type: 'GET',
       dataType: 'json',
+      data: { search_products: filterSearch, sort_price: sortPrice, category: category },
       success: callbackProducts,
       error: (xhr, status, error) => {
         console.error(error);
@@ -161,5 +176,27 @@
 
   $(document).ready(function () {
     products();
+
+    $('#searchInput').on('input', debounce(function() {
+      const filterValue = $(this).val();
+      const sortValue = $('#sortPrice').val();
+      const categoryValue = $('#categoryFilter').val();
+      products(filterValue, sortValue, categoryValue);
+    }, 300));
+
+    $('#sortPrice').change(function() {
+      const sortValue = $(this).val();
+      const filterValue = $('#searchInput').val();
+      const categoryValue = $('#categoryFilter').val();
+      products(filterValue, sortValue, categoryValue);
+    });
+
+    $('#categoryFilter').change(function() {
+      const categoryValue = $(this).val();
+      const filterValue = $('#searchInput').val();
+      const sortValue = $('#sortPrice').val();
+      products(filterValue, sortValue, categoryValue);
+    });
+
   });
 </script>

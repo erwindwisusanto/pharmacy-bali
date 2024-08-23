@@ -1,5 +1,5 @@
 <x-shop-layout>
-    <section class="mb-lg-14 mb-8 mt-8">
+    <section class="mb-lg-14 mb-8" style="margin-top: 7rem;">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -32,7 +32,7 @@
                                     <div class="col-3 col-lg-4 col-md-4">
                                         <div class="mb-3">
                                             <label for="age" class="form-label">Age</label>
-                                            <input type="text" class="form-control" id="age" name="age" placeholder="23"
+                                            <input type="number" class="form-control" id="age" name="age" placeholder="23" pattern="[0-9]"
                                                 required />
                                         </div>
                                     </div>

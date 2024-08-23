@@ -42,17 +42,17 @@ class QontakService
     $formattedItems = [];
     foreach($items as $key => $item) {
       $totalPrice += $item['product_price_native'] * $item['quantity'];
-      $formattedItems[] = chr(97 + $key) . ". " . $item['product_name'];
+      $formattedItems[] = chr(97 + $key) . ". " . $item['product_name'] . ' ' . $item['quantity'] . 'x ' . $item['product_price'];
     }
 
     $itemsText = "";
     foreach ($formattedItems as $item) {
-      $itemsText .= $item . " ";
+      $itemsText .= $item . "\\n";
     }
 
 		$data = [
 			'key' => "Nm_1LwjuNGRSuI_b9baeA2UBTZu7KlvL5oB6lmudZbE",
-			'to_number' => "6282115353192",
+			'to_number' => "6282110796637",
 			'to_name' => $name,
 			'message_template_id' => "2f401f8c-8ea8-47ee-91d9-371cee6a7b27",
 			'channel_integration_id' => "4f81cdab-3220-44a1-8981-05f163f78b20",

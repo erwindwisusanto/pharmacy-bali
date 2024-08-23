@@ -33,8 +33,8 @@
                 class="btn btn-primary btn-sm d-flex align-items-center" style="background-color: #00B2AE; border: none;">
                  <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
+                    width="22"
+                    height="22"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -45,7 +45,7 @@
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                  </svg>
-                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                <span class="spinner-border spinner-border-sm d-none p-2" style="height: 20px; width: 20px;" role="status" aria-hidden="true"></span>
               </a>
            </div>
         </div>

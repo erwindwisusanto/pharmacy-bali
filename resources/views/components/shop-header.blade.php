@@ -1,4 +1,4 @@
-<div class="border-bottom">
+<div class="border-bottom fixed-top" style="z-index: 1030; background-color: #fff">
   <div class="py-5">
      <div class="container">
         <div class="row w-100 align-items-center gx-lg-2 gx-0">
@@ -27,8 +27,8 @@
                     <a class="text-muted position-relative" href="{{ route('cart') }}">
                        <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          width="25"
-                          height="25"
+                          width="29"
+                          height="29"
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
