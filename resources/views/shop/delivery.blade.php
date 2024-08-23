@@ -177,44 +177,66 @@
         locationDetails: $(`#location-details`).val(),
         note: $(`#note`).val(),
         items: JSON.parse(localStorage.getItem('cart')) || [],
-        _token: '{{ csrf_token() }}'
       }
 
+      const message = TemplateMessage(dataRequest);
+      const encodedMessage = encodeURIComponent(message);
+
+      const customerService = '6282221122311';
+      const whatsappURL = `https://api.whatsapp.com/send/?phone=${encodeURIComponent(customerService)}&text=${encodedMessage}`;
+
       setTimeout(() => {
-        $.ajax({
-          type: 'POST',
-          url: '{{ route("pay") }}',
-          data: dataRequest,
-          dataType: 'json',
-          success: callbackPay,
-          complete: function() {
-            $(button).attr("disabled", false).css("background-color", "#00B2AE");
-            spinner.classList.add('d-none');
-            localStorage.clear();
-          }
-        });
+        window.open(whatsappURL);
+
+        $(button).attr("disabled", false).css("background-color", "#00B2AE");
+        spinner.classList.add('d-none');
+        localStorage.clear();
+
       }, 1300);
     }
 
+    const TemplateMessage = (data) => {
+      let message = `Hello pharmacybali.com by Cepat Sehat Clinic! I'd like to order as follows:\n\n`;
+      message += `1️⃣ Name: *${data.name}*\n`;
+      message += `2️⃣ Age: *${data.age}*\n`;
+      message += `3️⃣ Address: *${data.address}*\n`;
+      message += `4️⃣ Location details: *${data.locationDetails}*\n`;
+
+      let totalPrice = 0;
+      let medicineDetails = '';
+
+      data.items.forEach((item, index) => {
+        medicineDetails += `     ${String.fromCharCode(97 + index)}. ${item.product_name} ${item.quantity}x ${item.product_price}\n`;
+        totalPrice += item.quantity * item.product_price_native;
+      });
+
+      message += `5️⃣ Medicine (Total = *${formatter.format(totalPrice)})*:\n`;
+      message += medicineDetails;
+      message += `\n6️⃣ Note: ${data.note}\n\n`;
+      message += `Could you please assist me?`;
+
+      return message;
+    };
+
     const componentItems = (productImg, productName, productType, priceNative, quantity) => {
-        return `<li class="list-group-item px-4 py-3">
-                    <div class="row align-items-center">
-                        <div class="col-2 col-md-2">
-                            <img src="${productImg}" alt="Ecommerce"
-                                class="img-fluid" />
-                        </div>
-                        <div class="col-4 col-md-4">
-                            <h6 class="mb-0">${productName}</h6>
-                            <span><small class="text-muted">${productType}</small></span>
-                        </div>
-                        <div class="col-2 col-md-2 text-center text-muted">
-                            <span>${quantity}</span>
-                        </div>
-                        <div class="col-4 text-lg-end text-end text-md-end col-md-4">
-                            <span class="fw-bold">${formatter.format(priceNative)}</span>
-                        </div>
-                    </div>
-                </li>`;
+      return `<li class="list-group-item px-4 py-3">
+                  <div class="row align-items-center">
+                      <div class="col-2 col-md-2">
+                          <img src="${productImg}" alt="Ecommerce"
+                              class="img-fluid" />
+                      </div>
+                      <div class="col-4 col-md-4">
+                          <h6 class="mb-0">${productName}</h6>
+                          <span><small class="text-muted">${productType}</small></span>
+                      </div>
+                      <div class="col-2 col-md-2 text-center text-muted">
+                          <span>${quantity}</span>
+                      </div>
+                      <div class="col-4 text-lg-end text-end text-md-end col-md-4">
+                          <span class="fw-bold">${formatter.format(priceNative)}</span>
+                      </div>
+                  </div>
+              </li>`;
     }
 
     let itemsCube = $(`#order-list`);
