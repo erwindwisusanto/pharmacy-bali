@@ -3,6 +3,26 @@
     <div class="container">
     </div>
  </section>
+ <section class="mt-8">
+  <div class="container">
+     <div class="row">
+        <div class="col-12">
+           <div class="bg-light d-lg-flex justify-content-between align-items-center py-6 py-lg-3 px-8 text-center text-lg-start rounded">
+              <div class="d-lg-flex align-items-center">
+                 <img src="../assets/images/about/about-icons-1.svg" alt="" class="img-fluid" />
+                 <div class="ms-lg-4">
+                    <h5 class="fs-14 fw-semibold mb-1">Having trouble finding the right medicine?</h5>
+                    <span class="fs-14">Connect with our customer service team on WhatsApp for expert guidance and support.
+                    </span>
+                 </div>
+              </div>
+              <div class="mt-3 mt-lg-0">
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+</section>
  <section class="mt-8 mb-lg-14 mb-8">
   <div class="container">
      <div class="row">
@@ -67,6 +87,15 @@
 </section>
 <x-shop-view-product-modal/>
 </x-shop-layout>
+<div class="btn-float" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Consult with Our Medical Team"
+    data-bs-custom-class="custom-tooltip">
+    <div class="btn-circle whatsapp">
+        <a onclick="directurlWa()" class="text-white">
+          <i class="bi bi-whatsapp" style="font-size: 26px;"></i>
+        </a>
+    </div>
+</div>
+
 
 <script>
   "use strict";
@@ -135,6 +164,11 @@
     quickViewProductModel.modal('show');
   }
 
+  const directurlWa = () => {
+    const preWrittenMessage = 'Hi pharmacybali.com by Cepat Sehat Clinic! I’m having trouble finding the medicine I need, so I’m hoping you can assist me.';
+    window.open(`https://api.whatsapp.com/send/?phone=${encodeURIComponent('6282221122311')}&text=${encodeURIComponent(preWrittenMessage)}`, '_blank');
+  }
+
 
   const callbackProducts = (response) => {
     productCube.empty();
@@ -197,6 +231,10 @@
       const sortValue = $('#sortPrice').val();
       products(filterValue, sortValue, categoryValue);
     });
+
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(
+          tooltipTriggerEl));
 
   });
 </script>
