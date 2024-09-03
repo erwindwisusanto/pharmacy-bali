@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiEprescriptionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/signup', [ApiEprescriptionController::class, 'signup'])->name('signup')->middleware('custom.headers');
+Route::post('/signin', [ApiEprescriptionController::class, 'singin'])->name('singin')->middleware('custom.headers');
+Route::post('/send-epriscription', [ApiEprescriptionController::class, 'sendEprescription'])->name('sendEprescription')->middleware('custom.headers');
