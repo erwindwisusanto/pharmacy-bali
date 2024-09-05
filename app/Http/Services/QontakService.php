@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Services;
 
 use Illuminate\Support\Facades\Http;
@@ -6,18 +7,18 @@ use Illuminate\Support\Facades\Log;
 
 class QontakService
 {
-  protected $client;
+	protected $client;
 	protected $API_URL = "https://service-chat.qontak.com/api/open/v1/broadcasts/whatsapp/direct";
 
-  public function send($data)
-  {
-    Log::channel('qontak')->info('[REQUEST]'.json_encode($data));
-    try {
-      $response = Http::withHeaders([
-        'Authorization' => "Bearer {$data['key']}",
+	public function send($data)
+	{
+		Log::channel('qontak')->info('[REQUEST]' . json_encode($data));
+		try {
+			$response = Http::withHeaders([
+				'Authorization' => "Bearer {$data['key']}",
 				'Content-Type' => "application/json"
-      ])->post($this->API_URL, [
-        'to_number' => $data['to_number'],
+			])->post($this->API_URL, [
+				'to_number' => $data['to_number'],
 				'to_name' => $data['to_name'],
 				'message_template_id' => $data['message_template_id'],
 				'channel_integration_id' => $data['channel_integration_id'],
@@ -27,28 +28,28 @@ class QontakService
 				'parameters' => [
 					'body' => $data['body']
 				]
-      ]);
-      Log::channel('qontak')->info('[RESPONSE]'.json_encode($response->body()));
-      return true;
-    } catch (\Throwable $e) {
-      Log::channel('qontak')->info('[FAILED]'. $e->getMessage());
-      return false;
-    }
-  }
+			]);
+			Log::channel('qontak')->info('[RESPONSE]' . json_encode($response->body()));
+			return true;
+		} catch (\Throwable $e) {
+			Log::channel('qontak')->info('[FAILED]' . $e->getMessage());
+			return false;
+		}
+	}
 
-  public function sendWhatsAppMessageCS($name, $age, $phoneNumber, $address, $locationDetails, $note, $items)
+	public function sendWhatsAppMessageCS($name, $age, $phoneNumber, $address, $locationDetails, $note, $items)
 	{
-    $totalPrice = 0;
-    $formattedItems = [];
-    foreach($items as $key => $item) {
-      $totalPrice += $item['product_price_native'] * $item['quantity'];
-      $formattedItems[] = chr(97 + $key) . ". " . $item['product_name'] . ' ' . $item['quantity'] . 'x ' . $item['product_price'];
-    }
+		$totalPrice = 0;
+		$formattedItems = [];
+		foreach ($items as $key => $item) {
+			$totalPrice += $item['product_price_native'] * $item['quantity'];
+			$formattedItems[] = chr(97 + $key) . ". " . $item['product_name'] . ' ' . $item['quantity'] . 'x ' . $item['product_price'];
+		}
 
-    $itemsText = "";
-    foreach ($formattedItems as $item) {
-      $itemsText .= $item . "\\n";
-    }
+		$itemsText = "";
+		foreach ($formattedItems as $item) {
+			$itemsText .= $item . "\\n";
+		}
 
 		$data = [
 			'key' => "Nm_1LwjuNGRSuI_b9baeA2UBTZu7KlvL5oB6lmudZbE",
@@ -87,15 +88,44 @@ class QontakService
 					'key' => '6',
 					'value' => 'items',
 					'value_text' => $itemsText
-        ],
+				],
 				[
 					'key' => '7',
 					'value' => 'note',
 					'value_text' => $note
-			  ]
-      ]
+				]
+			]
 		];
 
 		return $this->send($data);
+	}
+
+	public function SendTOQontakCustomerService($phoneNumber, $patientName, $prescriptionId)
+	{
+		$URL_PDF_LOCAL = "http://localhost:3000/pdf/$prescriptionId";
+		$URL_PDF_PRODUCTION = "https://eprescription.cepatsehat.com/pdf/$prescriptionId";
+
+		$requestData = [
+			'key' => "zANsEIIodLnnBNkxrk3M45MwskKtWJBwIOuaovdvgmA",
+			'to_number' => "6282110796637",
+			'to_name' => $patientName,
+			'message_template_id' => "d5f23529-e4b0-4af5-b125-2023d725a269",
+			'channel_integration_id' => "cbee7636-5cce-4f6e-a404-85f518dfcc7b",
+			'lang_code' => 'en',
+			'body' => [
+				[
+					'key' => '1',
+					'value' => 'patient_name',
+					'value_text' => $patientName
+				],
+				[
+					'key' => '2',
+					'value' => 'url',
+					'value_text' => $URL_PDF_LOCAL
+				],
+			]
+		];
+
+		return $this->send($requestData);
 	}
 }
