@@ -90,15 +90,15 @@ class ApiEprescriptionService
                 "date" => Carbon::today()
             ];
 
-            $respDB = DB::table('eprescription')->insert($data);
+            $prescriptionId = DB::table('eprescription')->insertGetId($data);
 
-            if (!$respDB) {
+            if (!$prescriptionId) {
                 return 'Failed insert';
             }
 
             DB::commit();
 
-
+            $this->qontakService->SendTOQontakCustomerService($data['patient_phone'], $data['patient_name'], encryptID($prescriptionId));
             
             return true;
         } catch (Throwable $e) {
@@ -114,6 +114,19 @@ class ApiEprescriptionService
             $user = DB::table('t_user')->select('id')->where('uuid', $uuid)->first();
 
             return $user->id;
+        } catch (Throwable $e) {
+            return false;
+        }
+    }
+
+    public function GetEPrescription($prescriptionId)
+    {
+        $decryptedId = decryptID($prescriptionId);
+
+        try {
+            $user = DB::table('eprescription')->select('*')->where('id', $decryptedId)->first();
+
+            return $user;
         } catch (Throwable $e) {
             return false;
         }

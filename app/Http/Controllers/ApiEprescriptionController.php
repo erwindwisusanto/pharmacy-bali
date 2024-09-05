@@ -75,4 +75,11 @@ class ApiEprescriptionController extends Controller
 
         return response()->json(['message' => $reponse], 200);
     }
+
+    public function pdf($prescriptionId)
+    {
+        $response = $this->apiEprescriptionService->GetEPrescription($prescriptionId);
+
+        return response()->json(['success' => true, 'data' => $response]);
+    }
 }

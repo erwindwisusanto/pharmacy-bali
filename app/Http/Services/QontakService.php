@@ -100,25 +100,28 @@ class QontakService
 		return $this->send($data);
 	}
 
-	public function SendTOQontakCustomerService()
+	public function SendTOQontakCustomerService($phoneNumber, $patientName, $prescriptionId)
 	{
+		$URL_PDF_LOCAL = "http://localhost:3000/pdf/$prescriptionId";
+		$URL_PDF_PRODUCTION = "https://eprescription.cepatsehat.com/pdf/$prescriptionId";
+
 		$requestData = [
-			'key' => "Nm_1LwjuNGRSuI_b9baeA2UBTZu7KlvL5oB6lmudZbE",
-			'to_number' => "6282221122311",
-			'to_name' => "",
-			'message_template_id' => "2f401f8c-8ea8-47ee-91d9-371cee6a7b27",
-			'channel_integration_id' => "4f81cdab-3220-44a1-8981-05f163f78b20",
+			'key' => "zANsEIIodLnnBNkxrk3M45MwskKtWJBwIOuaovdvgmA",
+			'to_number' => "6282110796637",
+			'to_name' => $patientName,
+			'message_template_id' => "d5f23529-e4b0-4af5-b125-2023d725a269",
+			'channel_integration_id' => "cbee7636-5cce-4f6e-a404-85f518dfcc7b",
 			'lang_code' => 'en',
 			'body' => [
 				[
 					'key' => '1',
 					'value' => 'patient_name',
-					'value_text' => ""
+					'value_text' => $patientName
 				],
 				[
 					'key' => '2',
-					'value' => 'age',
-					'value_text' => ""
+					'value' => 'url',
+					'value_text' => $URL_PDF_LOCAL
 				],
 			]
 		];
