@@ -36,7 +36,7 @@ class ApiEprescriptionController extends Controller
             "email" => "string|required",
             "password" => "string|required",
         ];
-        
+
         $reqdata = $request->validate($rules);
 
         $reponse = $this->apiEprescriptionService->CheckCredential($reqdata);
@@ -46,32 +46,7 @@ class ApiEprescriptionController extends Controller
 
     public function sendEprescription(Request $request)
     {
-        $rules = [
-            "doctor" => "nullable|string",
-            "patientName" => "required|string",
-            "patientPhoneNumber" => "required|string",
-            "patientAge" => "required|integer",
-            "patientAddress" => "required|string",
-            "patientSex" => "required|string",
-            "patientWeight" => "required|integer",
-            "medications" => "required|array",
-            "user_id" => "required|string",
-            "alergi" => "",
-            "alergiInfo" => "",
-            "diagnosis" => "required|string",
-        ];
-    
-        $validator = Validator::make($request->all(), $rules);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'errors' => $validator->errors()
-            ], 422);
-        }
-
-        $validatedData = $validator->validated();
-
-        $reponse = $this->apiEprescriptionService->SavePrescription($validatedData);
+        $reponse = $this->apiEprescriptionService->SavePrescription($request->all());
 
         return response()->json(['message' => $reponse], 200);
     }
