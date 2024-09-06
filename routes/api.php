@@ -24,7 +24,7 @@ Route::post('/signin', [ApiEprescriptionController::class, 'singin'])->name('sin
 Route::post('/send-epriscription', [ApiEprescriptionController::class, 'sendEprescription'])->name('sendEprescription');
 Route::get('/pdf/{id}', [ApiEprescriptionController::class, 'pdf'])->name('pdf')->middleware('custom.headers');
 
-Route::options('send-epriscription', function () {
+Route::options('/send-epriscription', function () {
   return response()->json([], 204);
 });
 
