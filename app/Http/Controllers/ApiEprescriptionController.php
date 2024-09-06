@@ -8,81 +8,78 @@ use Illuminate\Support\Facades\Validator;
 
 class ApiEprescriptionController extends Controller
 {
-    protected $apiEprescriptionService;
-    public function __construct(ApiEprescriptionService $apiEprescriptionService)
-    {
-        $this->apiEprescriptionService = $apiEprescriptionService;
+  protected $apiEprescriptionService;
+  public function __construct(ApiEprescriptionService $apiEprescriptionService)
+  {
+    $this->apiEprescriptionService = $apiEprescriptionService;
+  }
+
+  public function signup(Request $request)
+  {
+    $rules = [
+      "name" => "string|required",
+      "phone" => "string|required",
+      "email" => "string|required",
+      "password" => "string|required",
+    ];
+
+    $reqdata = $request->validate($rules);
+
+    $reponse = $this->apiEprescriptionService->SaveNewUser($reqdata);
+
+    return response()->json($reponse);
+  }
+
+  public function singin(Request $request)
+  {
+    $rules = [
+      "email" => "string|required",
+      "password" => "string|required",
+    ];
+
+    $reqdata = $request->validate($rules);
+
+    $reponse = $this->apiEprescriptionService->CheckCredential($reqdata);
+
+    return response()->json($reponse);
+  }
+
+  public function sendEprescription(Request $request)
+  {
+    $rules = [
+      "doctor" => "nullable|string",
+      "patientName" => "required|string",
+      "patientPhoneNumber" => "required|string",
+      "patientAge" => "required|integer",
+      "patientAddress" => "required|string",
+      "patientSex" => "required|string",
+      "patientWeight" => "required|integer",
+      "medications" => "required|array",
+      "user_id" => "required|string",
+      "alergi" => "",
+      "alergiInfo" => "",
+      "diagnosis" => "required|string",
+    ];
+
+    $validator = Validator::make($request->all(), $rules);
+
+    if ($validator->fails()) {
+      return response()->json([
+        'errors' => $validator->errors()
+      ], 422);
     }
 
-    public function signup(Request $request)
-    {
-        $rules = [
-            "name" => "string|required",
-            "phone" => "string|required",
-            "email" => "string|required",
-            "password" => "string|required",
-        ];
+    $validatedData = $validator->validated();
 
-        $reqdata = $request->validate($rules);
+    $reponse = $this->apiEprescriptionService->SavePrescription($validatedData);
 
-        $reponse = $this->apiEprescriptionService->SaveNewUser($reqdata);
+    return response()->json(['message' => $reponse], 200);
+  }
 
-        return response()->json($reponse);
-    }
+  public function pdf($prescriptionId)
+  {
+    $response = $this->apiEprescriptionService->GetEPrescription($prescriptionId);
 
-    public function singin(Request $request)
-    {
-        $rules = [
-            "email" => "string|required",
-            "password" => "string|required",
-        ];
-
-        $reqdata = $request->validate($rules);
-
-        $reponse = $this->apiEprescriptionService->CheckCredential($reqdata);
-
-        return response()->json($reponse);
-    }
-
-    public function sendEprescription(Request $request)
-    {
-        // $rules = [
-        //     "doctor" => "nullable|string",
-        //     "patientName" => "required|string",
-        //     "patientPhoneNumber" => "required|string",
-        //     "patientAge" => "required|integer",
-        //     "patientAddress" => "required|string",
-        //     "patientSex" => "required|string",
-        //     "patientWeight" => "required|integer",
-        //     "medications" => "required|array",
-        //     "user_id" => "required|string",
-        //     "alergi" => "",
-        //     "alergiInfo" => "",
-        //     "diagnosis" => "required|string",
-        // ];
-
-        // $validator = Validator::make($request->all(), $rules);
-
-        // if ($validator->fails()) {
-        //     return response()->json([
-        //         'errors' => $validator->errors()
-        //     ], 422);
-        // }
-
-        // $validatedData = $validator->validated();
-
-        // $reponse = $this->apiEprescriptionService->SavePrescription($validatedData);
-
-        return response()->json(['message' => 'wqdqwd'], 200)
-        ->header('Access-Control-Allow-Origin', 'https://eprescription.cepatsehat.com')
-        ->header('Access-Control-Allow-Methods', 'POST, OPTIONS')
-        ->header('Access-Control-Allow-Headers', 'Content-Type');
-    }
-
-    public function pdf($prescriptionId)
-    {
-        $response = $this->apiEprescriptionService->GetEPrescription($prescriptionId);
-
-        return response()->json(['success' => true, 'data' => $response]);
-    }
+    return response()->json(['success' => true, 'data' => $response]);
+  }
 }
