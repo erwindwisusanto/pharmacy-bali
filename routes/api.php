@@ -23,3 +23,9 @@ Route::post('/signup', [ApiEprescriptionController::class, 'signup'])->name('sig
 Route::post('/signin', [ApiEprescriptionController::class, 'singin'])->name('singin')->middleware('custom.headers');
 Route::post('/send-epriscription', [ApiEprescriptionController::class, 'sendEprescription'])->name('sendEprescription')->middleware('custom.headers');
 Route::get('/pdf/{id}', [ApiEprescriptionController::class, 'pdf'])->name('pdf')->middleware('custom.headers');
+
+Route::get('/get-text', function () {
+  return response()->json([
+    'message' => 'Hello, this is your text response from the API!'
+  ]);
+});
