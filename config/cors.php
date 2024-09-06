@@ -17,13 +17,13 @@ return [
 
     'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
-    'allowed_methods' => ['*'],
+    'allowed_methods' => ['POST', 'GET', 'OPTIONS', 'DELETE', 'PUT'],
 
-    'allowed_origins' => ['http://localhost:3000', 'https://eprescription.cepatsehat.com'],
+    'allowed_origins' => ['https://eprescription.cepatsehat.com'],
 
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => ['~^https:\/\/.*\.cepatsehat\.com$~'],
 
-    'allowed_headers' => ['*'],
+    'allowed_headers' => ['Content-Type', 'X-Requested-With', 'X-CSRF-Token'],
 
     'exposed_headers' => [],
 
