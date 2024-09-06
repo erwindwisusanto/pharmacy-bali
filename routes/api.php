@@ -21,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/signup', [ApiEprescriptionController::class, 'signup'])->name('signup')->middleware('custom.headers');
 Route::post('/signin', [ApiEprescriptionController::class, 'singin'])->name('singin')->middleware('custom.headers');
-Route::post('/send-epriscription', [ApiEprescriptionController::class, 'sendEprescription'])->name('sendEprescription')->middleware('custom.headers');
+Route::post('/send-epriscription', [ApiEprescriptionController::class, 'sendEprescription'])->name('sendEprescription');
 Route::get('/pdf/{id}', [ApiEprescriptionController::class, 'pdf'])->name('pdf')->middleware('custom.headers');
 
 Route::options('send-epriscription', function () {
