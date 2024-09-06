@@ -121,7 +121,7 @@ class QontakService
 				[
 					'key' => '2',
 					'value' => 'url',
-					'value_text' => $URL_PDF_LOCAL
+					'value_text' => $URL_PDF_PRODUCTION
 				],
 			]
 		];
