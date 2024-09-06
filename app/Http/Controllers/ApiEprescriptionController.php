@@ -73,7 +73,10 @@ class ApiEprescriptionController extends Controller
 
         $reponse = $this->apiEprescriptionService->SavePrescription($validatedData);
 
-        return response()->json(['message' => $reponse], 200);
+        return response()->json(['message' => $reponse], 200)
+        ->header('Access-Control-Allow-Origin', 'https://eprescription.cepatsehat.com')
+        ->header('Access-Control-Allow-Methods', 'POST, OPTIONS')
+        ->header('Access-Control-Allow-Headers', 'Content-Type');;
     }
 
     public function pdf($prescriptionId)

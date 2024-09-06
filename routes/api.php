@@ -25,8 +25,11 @@ Route::post('/send-epriscription', [ApiEprescriptionController::class, 'sendEpre
 Route::get('/pdf/{id}', [ApiEprescriptionController::class, 'pdf'])->name('pdf')->middleware('custom.headers');
 
 Route::options('/send-epriscription', function () {
-  return response()->json([], 204);
+  return response()->json([], 204)->header('Access-Control-Allow-Origin', 'https://eprescription.cepatsehat.com')
+                    ->header('Access-Control-Allow-Methods', 'POST, OPTIONS')
+                    ->header('Access-Control-Allow-Headers', 'Content-Type');
 });
+
 
 Route::get('/get-text', function () {
   return response()->json([

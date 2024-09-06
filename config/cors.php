@@ -1,20 +1,19 @@
 <?php
 
 return [
-  'paths' => ['api/*'], // Allow CORS only on API routes
+    'paths' => ['api/*'],
 
-  'allowed_methods' => ['*'], // Allow all HTTP methods (POST, GET, etc.)
+    'allowed_methods' => ['*'], // Allow POST, OPTIONS, etc.
 
-  'allowed_origins' => ['https://eprescription.cepatsehat.com'], // Allow requests only from your front-end origin
-  // 'allowed_origins' => ['http://localhost:3000'], // Allow requests only from your front-end origin
+    'allowed_origins' => ['https://eprescription.cepatsehat.com'], // Set the frontend origin
+ // 'allowed_origins' => ['http://localhost:3000'],
+    'allowed_origins_patterns' => [],
 
-  'allowed_origins_patterns' => [], // Add patterns if you need wildcard origins
+    'allowed_headers' => ['Content-Type', 'X-Requested-With', 'Authorization', 'Origin', 'Accept'], // Allow Content-Type
 
-  'allowed_headers' => ['Content-Type', 'X-Requested-With', 'Authorization', 'Origin', 'Accept'], // Allow specific headers
+    'exposed_headers' => [],
 
-  'exposed_headers' => [], // Expose headers if needed
+    'max_age' => 0,
 
-  'max_age' => 0, // Cache duration for preflight requests
-
-  'supports_credentials' => false, // If your request requires credentials (set to true if needed)
+    'supports_credentials' => false,
 ];
