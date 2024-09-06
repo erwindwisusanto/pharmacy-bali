@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*', 'http://localhost:3000', 'https://pharmacybali.com'],
+    'allowed_origins' => ['*', 'http://localhost:3000', 'https://eprescription.cepatsehat.com'],
 
     'allowed_origins_patterns' => [],
 
