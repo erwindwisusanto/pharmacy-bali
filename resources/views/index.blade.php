@@ -146,7 +146,7 @@
 <script>
     const directurl = (platform) => {
         const currentTime = new Date();
-        const jakartaTime = new Date(currentTime.toLocaleString("id-ID", {
+        const jakartaTime = new Date(currentTime.toLocaleString("en-US", {
             timeZone: "Asia/Jakarta"
         }));
 
