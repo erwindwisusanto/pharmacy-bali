@@ -154,27 +154,6 @@
             console.error('Error in getWaWording:', error);
         });
 
-        const directurl = (platform) => {
-            switch (platform) {
-                case _WHATSAPP:
-                    if (campaignName) {
-                        updateCounter(_WHATSAPP);
-                        window.open(`https://api.whatsapp.com/send/?phone=${encodeURIComponent(numberphone)}&text=${encodeURIComponent(waword)}`, '_blank');
-                        break;
-                    } else {
-                        updateCounter(_WHATSAPP);
-                        window.open(`https://api.whatsapp.com/send/?phone=${encodeURIComponent(numberphone)}&text=Hello+pharmacybali.com+by+Cepat+Sehat+Clinic%2C+I+want+a+consultation&type=phone_number&app_absent=0`, '_blank');
-                        break;
-                    }
-                case _TELEGRAM:
-                    updateCounter(_TELEGRAM);
-                    window.open(`https://t.me/${telegramUsername}?text=${encodeURIComponent(waword)}`, '_blank');
-                    break;
-                default:
-                    break;
-            }
-        }
-
         $(document).ready(function () {
             setTimeout(function () {
                 visitCounter();
