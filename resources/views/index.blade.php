@@ -146,7 +146,7 @@
 <script>
     const directurl = (platform) => {
         const currentTime = new Date();
-        const jakartaTime = new Date(currentTime.toLocaleString("en-US", {
+        const jakartaTime = new Date(currentTime.toLocaleString("id-ID", {
             timeZone: "Asia/Jakarta"
         }));
 
@@ -154,6 +154,9 @@
 
         const hours = jakartaTime.getHours();
         const minutes = jakartaTime.getMinutes();
+
+        // const hours = 1;
+        // const minutes = 4;
 
         if (locale === 'id') {
           waword = "Halo pharmacybali.com by Klinik Cepat Sehat, saya mau konsultasi";
