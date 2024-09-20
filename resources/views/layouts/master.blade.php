@@ -60,7 +60,7 @@
 
     <x-btn-float/>
     <x-footer/>
-
+    @php $locale = session()->get('locale'); @endphp
     <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -153,6 +153,77 @@
         }).catch((error) => {
             console.error('Error in getWaWording:', error);
         });
+
+        const directurl = (platform) => {
+          const currentTime = new Date();
+          const jakartaTime = new Date(currentTime.toLocaleString("en-US", {
+              timeZone: "Asia/Jakarta"
+          }));
+
+          const locale = "{{ $locale }}";
+
+          const hours = jakartaTime.getHours();
+          const minutes = jakartaTime.getMinutes();
+
+          // const hours = 1;
+          // const minutes = 4;
+
+          if (waword === '') {
+            if (locale === 'id') {
+              waword = "Halo pharmacybali.com by Klinik Cepat Sehat, saya mau konsultasi";
+            } else if (locale === 'en') {
+              waword = "Hello pharmacybali.com by Cepat Sehat Clinic, I want a consultation";
+            } else {
+              waword = "Hello pharmacybali.com by Cepat Sehat Clinic, I want a consultation";
+            }
+          }
+
+          if ((hours >= 0 && hours < 5) || (hours === 4 && minutes <= 59)) {
+            waword = "Hi Pharmacy Bali! I’m looking into your medicine delivery service 💊📦. Could you guide me on how to order and when to expect delivery? Thanks!";
+          }
+
+          switch (platform) {
+              case _WHATSAPP:
+                  if (campaignName) {
+                      updateCounter(_WHATSAPP);
+                      window.open(
+                          `https://api.whatsapp.com/send/?phone=${encodeURIComponent(numberphone)}&text=${encodeURIComponent(waword)}`,
+                          '_blank');
+                      break;
+                  } else {
+                      updateCounter(_WHATSAPP);
+                      window.open(
+                          `https://api.whatsapp.com/send/?phone=${encodeURIComponent(numberphone)}&text=${encodeURIComponent(waword)}`,
+                          '_blank');
+                      break;
+                  }
+              case _TELEGRAM:
+                  updateCounter(_TELEGRAM);
+                  window.open(`https://t.me/${telegramUsername}?text=${encodeURIComponent(waword)}`, '_blank');
+                  break;
+              default:
+                  break;
+          }
+
+          // switch (platform) {
+          //     case _WHATSAPP:
+          //         if (campaignName) {
+          //             updateCounter(_WHATSAPP);
+          //             window.open(`https://api.whatsapp.com/send/?phone=${encodeURIComponent(numberphone)}&text=${encodeURIComponent(waword)}`, '_blank');
+          //             break;
+          //         } else {
+          //             updateCounter(_WHATSAPP);
+          //             window.open(`https://api.whatsapp.com/send/?phone=${encodeURIComponent(numberphone)}&text=Hello+pharmacybali.com+by+Cepat+Sehat+Clinic%2C+I+want+a+consultation&type=phone_number&app_absent=0`, '_blank');
+          //             break;
+          //         }
+          //     case _TELEGRAM:
+          //         updateCounter(_TELEGRAM);
+          //         window.open(`https://t.me/${telegramUsername}?text=${encodeURIComponent(waword)}`, '_blank');
+          //         break;
+          //     default:
+          //         break;
+          // }
+        }
 
         $(document).ready(function () {
             setTimeout(function () {
