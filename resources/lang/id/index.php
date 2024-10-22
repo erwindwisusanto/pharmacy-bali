@@ -17,8 +17,8 @@ return [
     "mark" => "Banyak pilihan produk dan situs web yang sangat ramah pengguna."
   ],
   "footer" => [
-    "text_1" => "Pengiriman apotek kami dilakukan melalui Klinik Cepat Sehat.",
-    "text_2" => "Klinik Cepat Sehat adalah klinik yang terdaftar di bawah hukum Indonesia dengan nomor registrasi 04102100035090001. Kami berkomitmen untuk menyediakan layanan pengiriman obat secara online yang terintegrasi dan layanan medis homecare.",
-    "text_3" => "Rasakan kemudahan layanan pengiriman obat langsung ke depan pintu Anda. Kami juga tersedia di:",
+    "text_1" => "Layanan pengiriman obat kami didukung oleh Klinik Cepat Sehat (No. Reg. 04102100035090001), mitra terpercaya Anda dalam perawatan kesehatan. Kami menyediakan solusi kesehatan terpadu, termasuk perawatan di rumah, konsultasi online, dan pengiriman obat yang andal.",
+    "text_2" => "🛵 Nikmati layanan tanpa ribet dengan pengiriman obat langsung ke pintu Anda, 24/7.",
+    "text_3" => "Kami juga tersedia di:",
   ]
 ];
