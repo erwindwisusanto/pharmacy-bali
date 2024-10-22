@@ -17,8 +17,8 @@ return [
     "mark" => "Great selection of products and very user-friendly website."
   ],
   "footer" => [
-    "text_1" => "Our pharmacy delivery is brought to user through Clinic Cepat Sehat.",
-    "text_2" => "Clinic Cepat Sehat is a clinic registered under the laws of Indonesia with the registration number 04102100035090001. We are committed to provide integrated online medicine delivery service and homecare medical services.",
-    "text_3" => "Enjoy our medicine delivery service from the comfort of your home. We are also available at:",
+    "text_1" => "Our pharmacy delivery service is powered by Clinic Cepat Sehat (Reg. No. 04102100035090001), your trusted partner in healthcare. We provide integrated healthcare solutions, including home care, online consultations, and reliable pharmacy delivery.",
+    "text_2" => "🛵 Experience hassle-free service with medications delivered right to your door, 24/7.",
+    "text_3" => "We’re also available at:",
   ]
 ];
