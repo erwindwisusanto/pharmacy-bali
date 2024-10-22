@@ -12,9 +12,12 @@
                 <p class="fs-14">
                     {{__('index.footer.text_1')}}
                 </p>
+                <p class="fs-14">
+                  {{__('index.footer.text_2')}}
+              </p>
                 <div class="location">
                     <p class="fs-14">
-                        {{__('index.footer.text_2')}}
+                        {{__('index.footer.text_3')}}
                     </p>
                     <div class="row g-3">
                         <div class="col-md-3">
