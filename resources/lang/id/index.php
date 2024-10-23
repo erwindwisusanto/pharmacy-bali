@@ -19,6 +19,6 @@ return [
   "footer" => [
     "text_1" => "Layanan pengiriman obat kami didukung oleh Klinik Cepat Sehat (No. Reg. 04102100035090001), mitra terpercaya Anda dalam perawatan kesehatan. Kami menyediakan solusi kesehatan terpadu, termasuk perawatan di rumah, konsultasi online, dan pengiriman obat yang andal.",
     "text_2" => "🛵 Nikmati layanan tanpa ribet dengan pengiriman obat langsung ke pintu Anda, 24/7.",
-    "text_3" => "Kami juga tersedia di:",
+    "text_3" => "Mitra apotek online kami di seluruh Bali menjamin layanan terpercaya dengan pengiriman langsung. Jelajahi komentar dan penilaian kami di Google Maps di bawah ini.",
   ]
 ];
