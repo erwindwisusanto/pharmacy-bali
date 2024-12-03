@@ -17,7 +17,7 @@ return [
     "mark" => "Great selection of products and very user-friendly website."
   ],
   "footer" => [
-    "text_1" => "Our pharmacy delivery service is powered by Clinic Cepat Sehat (Reg. No. 04102100035090001), your trusted partner in healthcare. We provide integrated healthcare solutions, including home care, online consultations, and reliable pharmacy delivery.",
+    "text_1" => "Our pharmacy delivery service is powered by Clinic Cepat Sehat (Reg. No. 04102100035090001), your trusted partner in healthcare. We provide integrated healthcare solutions, including home care, online consultations, and reliable home check lab.",
     "text_2" => "🛵 Experience hassle-free service with medications delivered right to your door, 24/7.",
     "text_3" => "Our online pharmacy partners across Bali ensure trusted, delivery-only services. Explore our Google Map comments and ratings below.",
   ]
