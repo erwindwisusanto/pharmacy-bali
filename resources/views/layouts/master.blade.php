@@ -146,7 +146,7 @@
           if (window.dataLayer) {
             window.dataLayer.push({
               event: 'floatingButtonClick',
-              eventCategory: 'Floating'
+              eventCategory: 'Floating',
               eventAction: 'click',
               eventLabel: `${platform} Button Clicked`
             });
