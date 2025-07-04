@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\PsychiatryController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,3 +31,7 @@ Route::get('products', [ShopController::class, 'Products'])->name('products');
 Route::get('find-nearest-pharmacy', [ShopController::class, 'loadingScreen'])->name('loading_screen_shop');
 Route::get('delivery', [ShopController::class, 'delivery'])->name('delivery');
 Route::get('success', [ShopController::class, 'success'])->name('success');
+
+// PSYCHIATRY
+Route::get('/psychiatry', [PsychiatryController::class, 'index']);
+Route::get('/psychiatry/order-list', [PsychiatryController::class, 'order'])->name('order-list');
