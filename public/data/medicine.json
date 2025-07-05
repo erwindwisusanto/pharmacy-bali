@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Omeprazole",
+    "image": "medicine-one.webp",
+    "category": "Depression"
+  },
+  {
+    "id": 2,
+    "name": "Cetirizine",
+    "image": "medicine-one.webp",
+    "category": "Depression"
+  },
+  {
+    "id": 3,
+    "name": "Ibuprofen",
+    "image": "medicine-one.webp",
+    "category": "Anxiety"
+  },
+  {
+    "id": 4,
+    "name": "Amoxicillin",
+    "image": "medicine-one.webp",
+    "category": "Anxiety"
+  },
+  {
+    "id": 5,
+    "name": "Paracetamol",
+    "image": "medicine-one.webp",
+    "category": "Bipolar"
+  },
+  {
+    "id": 6,
+    "name": "Antangin",
+    "image": "medicine-one.webp",
+    "category": "Bipolar"
+  },
+  {
+    "id": 7,
+    "name": "Loperamide",
+    "image": "medicine-one.webp",
+    "category": "ADHD"
+  },
+  {
+    "id": 8,
+    "name": "Multivitamin",
+    "image": "medicine-one.webp",
+    "category": "ADHD"
+  }
+]

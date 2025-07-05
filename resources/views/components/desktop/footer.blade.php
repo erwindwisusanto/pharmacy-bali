@@ -1,7 +1,7 @@
 <footer class="bg-[#1AD0D0] p-4 mt-10">
     <div class="flex items-center justify-between">
-        <img class="w-auto h-12" src="/assets/img/psychiatry/cs-logo-white.png" alt="cepat sehat logo" />
-        <img class="w-auto h-12" src="/assets/img/psychiatry/atensi-logo.png" alt="atensi logo" />
+        <img class="w-28 h-10" src="/assets/img/psychiatry/cs-logo-white.png" alt="cepat sehat logo" />
+        <img class="w-28 h-10" src="/assets/img/psychiatry/atensi-logo.png" alt="atensi logo" />
     </div>
 
     <div class="mt-4 text-white font-light">
@@ -15,7 +15,7 @@
             <p class="font-semibold">Pharmacy Apotek 24/7 Seminyak</p>
             <p class="font-light">Jl. Legian No.369 X, Legian, Kuta, Badung Regency, Bali 80361</p>
             <div class="flex items-center gap-2">
-                <img class="w-6 h-auto" src="/assets/img/psychiatry/maps-icon.png" alt="maps-icon" />
+                <img class="w-6 h-6" src="/assets/img/psychiatry/maps-icon.png" alt="maps-icon" />
                 <a href="https://maps.app.goo.gl/A4hPnNt7zKB7tU8p9" class="font-semibold">Find Out Why Patients Love Us!</a>
             </div>
         </div>
@@ -23,7 +23,7 @@
             <p class="font-semibold">Pharmacy Apotek 24/7 Jimbaran</p>
             <p class="font-light">Jl. Puri Gading, Jimbaran, South Kuta, Badung  Regency, Bali 80361</p>
             <div class="flex items-center gap-2">
-                <img class="w-6 h-auto" src="/assets/img/psychiatry/maps-icon.png" alt="maps-icon" />
+                <img class="w-6 h-6" src="/assets/img/psychiatry/maps-icon.png" alt="maps-icon" />
                 <a href="https://maps.app.goo.gl/HK9e5atyceDesCAGA" class="font-semibold">Find Out Why Patients Love Us!</a>
             </div>
         </div>
@@ -31,7 +31,7 @@
             <p class="font-semibold">Pharmacy Apotek 24/7 Canggu</p>
             <p class="font-light">Jl. Raya Canggu No.12, Canggu, Kec. Kuta Utara, Kabupaten Badung, Badung, Bali 80351</p>
             <div class="flex items-center gap-2">
-                <img class="w-6 h-auto" src="/assets/img/psychiatry/maps-icon.png" alt="maps-icon" />
+                <img class="w-6 h-6" src="/assets/img/psychiatry/maps-icon.png" alt="maps-icon" />
                 <a href="https://maps.app.goo.gl/JmcKg5kFWsdQPVnu5" class="font-semibold">Find Out Why Patients Love Us!</a>
             </div>
         </div>
@@ -41,7 +41,7 @@
             <p class="font-semibold">Pharmacy Apotek 24/7 Sanur</p>
             <p class="font-light">Jl. Batur Sari No.33, Sanur Kauh, Denpasar Selatan, Kota Denpasar, Bali 80228</p>
             <div class="flex items-center gap-2">
-                <img class="w-6 h-auto" src="/assets/img/psychiatry/maps-icon.png" alt="maps-icon" />
+                <img class="w-6 h-6" src="/assets/img/psychiatry/maps-icon.png" alt="maps-icon" />
                 <a href="https://maps.app.goo.gl/63Ls1VN8p8khiHW37?g_st=ic" class="font-semibold">Find Out Why Patients Love Us!</a>
             </div>
         </div>
@@ -49,7 +49,7 @@
             <p class="font-semibold">Pharmacy Apotek 24/7 Umalas</p>
             <p class="font-light">Jl. Umalas 1 No.6, Kerobokan Kelod, Kec. Kuta Utara, Kabupaten Badung, Bali 80361</p>
             <div class="flex items-center gap-2">
-                <img class="w-6 h-auto" src="/assets/img/psychiatry/maps-icon.png" alt="maps-icon" />
+                <img class="w-6 h-6" src="/assets/img/psychiatry/maps-icon.png" alt="maps-icon" />
                 <a href="https://maps.app.goo.gl/EqiKuhShnbneW4Wh8?g_st=ic" class="font-semibold">Find Out Why Patients Love Us!</a>
             </div>
         </div>
@@ -57,7 +57,7 @@
             <p class="font-semibold">Pharmacy Apotek 24/7 Pererenan</p>
             <p class="font-light">Jl. Jantuk Angsa Desa No.20, Pererenan, Kec. Mengwi, Kabupaten Badung, Bali 803511</p>
             <div class="flex items-center gap-2">
-                <img class="w-6 h-auto" src="/assets/img/psychiatry/maps-icon.png" alt="maps-icon" />
+                <img class="w-6 h-6" src="/assets/img/psychiatry/maps-icon.png" alt="maps-icon" />
                 <a href="https://maps.app.goo.gl/fRJuxZEuW6gAxxV97?g_st=ic" class="font-semibold">Find Out Why Patients Love Us!</a>
             </div>
         </div>

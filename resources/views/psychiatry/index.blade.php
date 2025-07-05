@@ -4,8 +4,8 @@
 
 @section('content')
     
-{{-- MOBILE --}}
-<div class="max-w-md mx-auto block md:hidden">
+{{-- MOBILE (Use For Mobile Only) --}}
+{{-- <div class="max-w-md mx-auto block md:hidden">
     <nav class="flex items-center justify-between p-4">
         <img class="w-auto h-10" src="/assets/img/psychiatry/cs-logo.png" alt="cepat sehat logo" />
         <a href="{{ route('order-list') }}">
@@ -57,37 +57,40 @@
         <h2 class="text-center text-[#1AD0D0] text-3xl font-semibold">Explore Our Range of Medicines</h2>
         <h4 class="text-center text-lg mt-2">Browse Our Available Medicines</h4>
 
-        <input class="border-2 border-[#1AD0D0] focus:outline-[#1AD0D0] w-full p-2 rounded-full mt-4" placeholder="Search medicines" type="text">
+        <form id="search-form">
+            <input id="search-input" class="border-2 border-[#1AD0D0] focus:outline-[#1AD0D0] w-full p-2 rounded-full mt-4" placeholder="Search medicines" type="text" name="q">
+        </form>
 
         <div id="scroll-container" class="overflow-x-auto whitespace-nowrap no-scrollbar mt-4">
             <div class="inline-flex gap-2">
-                <button
-                    class="flex items-center gap-2 px-4 py-2 border rounded-full text-sm text-white bg-[#1AD0D0] cursor-pointer">
+                <button data-category="all" 
+                    class="category-btn flex items-center gap-2 px-4 py-2 border rounded-full text-sm text-white bg-[#1AD0D0] cursor-pointer">
                     <p>All Medicine</p>
                 </button>
-                <button
-                    class="flex items-center gap-2 px-4 py-2 rounded-full text-sm text-black bg-[#F3F4F6] cursor-pointer">
+                <button data-category="Depression" 
+                    class="category-btn flex items-center gap-2 px-4 py-2 rounded-full text-sm text-black bg-[#F3F4F6] cursor-pointer">
                     <p>Depression</p>
                 </button>
-                <button
-                    class="flex items-center gap-2 px-4 py-2 rounded-full text-sm text-black bg-[#F3F4F6] cursor-pointer">
+                <button data-category="Anxiety" 
+                    class="category-btn flex items-center gap-2 px-4 py-2 rounded-full text-sm text-black bg-[#F3F4F6] cursor-pointer">
                     <p>Anxiety</p>
                 </button>
-                <button
-                    class="flex items-center gap-2 px-4 py-2 rounded-full text-sm text-black bg-[#F3F4F6] cursor-pointer">
+                <button data-category="Bipolar" 
+                    class="category-btn flex items-center gap-2 px-4 py-2 rounded-full text-sm text-black bg-[#F3F4F6] cursor-pointer">
                     <p>Bipolar</p>
                 </button>
-                <button
-                    class="flex items-center gap-2 px-4 py-2 rounded-full text-sm text-black bg-[#F3F4F6] cursor-pointer">
+                <button data-category="ADHD" 
+                    class="category-btn flex items-center gap-2 px-4 py-2 rounded-full text-sm text-black bg-[#F3F4F6] cursor-pointer">
                     <p>ADHD</p>
                 </button>
             </div>
         </div>
 
-        <div class="flex flex-row items-center justify-center gap-4 mt-4 flex-wrap">
-            <div>
-                <img class="w-[170px] h-auto rounded-3xl" src="/assets/img/psychiatry/medicine-one.webp" alt="" />
-                <p class="font-medium text-center mt-2">Obat ABC</p>
+        <div id="medicine-container" class="flex flex-row items-center justify-center gap-4 mt-4 flex-wrap">
+            @foreach ($medicines as $med)
+            <div class="medicine-card" data-name="{{ strtolower($med['name']) }}" data-category="{{ $med['category'] }}">
+                <img class="w-[170px] h-auto rounded-3xl" src="/assets/img/psychiatry/{{ $med['image'] }}" alt="" />
+                <p class="font-medium text-center mt-2">{{ $med['name'] }}</p>
                 <button class="bg-[#1AD0D0] py-2 px-4 rounded-full w-full cursor-pointer">
                     <div class="flex flex-row items-center gap-2 justify-center">
                         <img class="w-6 h-6" src="/assets/img/psychiatry/cart-icon-white.png" alt="cart-icon" />
@@ -95,16 +98,7 @@
                     </div>
                 </button>
             </div>
-            <div>
-                <img class="w-[170px] h-auto rounded-3xl" src="/assets/img/psychiatry/medicine-one.webp" alt="" />
-                <p class="font-medium text-center mt-2">Obat ABC</p>
-                <button class="bg-[#1AD0D0] py-2 px-4 rounded-full w-full cursor-pointer">
-                    <div class="flex flex-row items-center gap-2 justify-center">
-                        <img class="w-6 h-6" src="/assets/img/psychiatry/cart-icon-white.png" alt="cart-icon" />
-                        <p class="text-white">Add To Cart</p>
-                    </div>
-                </button>
-            </div>
+            @endforeach
         </div>
     </section>
 
@@ -116,95 +110,118 @@
     </section>
 
     @include('components.mobile.footer')
-</div>
+</div> --}}
 
+<div class="max-w-5xl mx-auto">
 
-{{-- DESKTOP --}}
-<div class="max-w-6xl mx-auto hidden md:block">
-    <nav class="flex items-center justify-between p-4">
-        <img class="w-auto h-10" src="/assets/img/psychiatry/cs-logo.png" alt="cepat sehat logo" />
+    {{-- Navbar Section --}}
+    <nav class="flex items-center justify-between p-4 mx-auto max-w-md md:max-w-5xl">
+        <img class="w-28 h-10" src="/assets/img/psychiatry/cs-logo.png" alt="cepat sehat logo" />
         <a href="{{ route('order-list') }}">
             <img class="w-8 h-8" src="/assets/img/psychiatry/cart-icon.png" alt="cart-icon" />
         </a>
     </nav>
 
-    <section id="hero">
+    {{-- Hero Section --}}
+    <section id="hero" class="hidden md:block">
         <h1 class="font-semibold text-center text-3xl text-[#1AD0D0]">Prescribed Psychiatry Medications, <br> Delivered To Your Door</h1>
-        <img class="w-[600px] h-auto mx-auto rounded-3xl my-8" src="/assets/img/psychiatry/desktop/hero-image-desktop.webp" alt="cepat sehat logo" />
+        <img width="600px" height="400px" class="w-[600px] h-auto mx-auto rounded-3xl my-8" src="https://ik.imagekit.io/j8phzwpsbx/psychiatry/hero-image-desktop.webp" alt="cepat sehat logo" />
+
         <x-cta-btn class="w-[300px]" title="Get Medicine"/>
     </section>
+    <section id="hero" class="bg-[url('/assets/img/psychiatry/hero-image.webp')] bg-cover bg-center h-[650px] w-full block md:hidden max-w-md mx-auto">
+        <div class="flex flex-col justify-end h-full py-10 px-4 text-white">
+            <h1 class="font-semibold text-center text-3xl mb-6">Prescribed Psychiatry Medications, Delivered To Your Door</h1>
 
-    <section id="how-it-works" class="px-4 mt-10">
+            <x-cta-btn class="w-full" title="Get Medicine"/>
+        </div>
+    </section>
+
+    {{-- How It Works Section --}}
+    <section id="how-it-works" class="px-4 mt-10 hidden md:block">
         <h2 class="text-center text-[#1AD0D0] text-3xl font-semibold">How It Works</h2>
         <h4 class="text-center text-lg mt-2">Simple Steps to Support Your Mental Health</h4>
 
-        <div class="bg-[url('/assets/img/psychiatry/desktop/step-one-desktop.webp')] bg-cover bg-center w-[600px] h-[225px] rounded-4xl mt-4 mx-auto">
-            <div class="flex flex-col justify-end h-full p-4">
-                <p class="text-white font-semibold text-lg">Step 1 : <br> <span class="font-medium">Online Doctor Consultation</span></p>
-            </div>
-        </div>
-        <div class="bg-[url('/assets/img/psychiatry/desktop/step-two-desktop.webp')] bg-cover bg-center w-[600px] h-[225px] rounded-4xl mt-4 mx-auto">
-            <div class="flex flex-col justify-end h-full p-4">
-                <p class="text-white font-semibold text-lg">Step 2 : <br> <span class="font-medium">Receive Your Prescription</span></p>
-            </div>
-        </div>
-        <div class="bg-[url('/assets/img/psychiatry/desktop/step-three-desktop.webp')] bg-cover bg-center w-[600px] h-[225px] rounded-4xl mt-4 mx-auto">
-            <div class="flex flex-col justify-end h-full p-4">
-                <p class="text-white font-semibold text-lg">Step 3 : <br> <span class="font-medium">Medications Delivered To You</span></p>
-            </div>
-        </div>
+        <x-how-it-works class="w-[600px] h-[225px]" image="https://ik.imagekit.io/j8phzwpsbx/psychiatry/step-one-desktop.webp" step="Step 1 :" description="Online Doctor Consultation"/>
+        <x-how-it-works class="w-[600px] h-[225px]" image="https://ik.imagekit.io/j8phzwpsbx/psychiatry/step-two-desktop.webp" step="Step 2 :" description="Receive Your Prescription"/>
+        <x-how-it-works class="w-[600px] h-[225px]" image="https://ik.imagekit.io/j8phzwpsbx/psychiatry/step-three-desktop.webp" step="Step 3 :" description="Medications Delivered To You"/>
+
         <x-cta-btn class="mt-4 w-[300px]" title="Speak To Doctor"/>
     </section>
+    <section id="how-it-works" class="px-4 mt-10 max-w-md mx-auto md:hidden">
+        <h2 class="text-center text-[#1AD0D0] text-3xl font-semibold">How It Works</h2>
+        <h4 class="text-center text-lg mt-2">Simple Steps to Support Your Mental Health</h4>
 
-    <section id="specific-needs" class="px-4 mt-10 py-10 bg-[#F3F4F6]">
+        <x-how-it-works class="w-full h-[125px]" image="/assets/img/psychiatry/step-one.webp" step="Step 1 :" description="Online Doctor Consultation"/>
+        <x-how-it-works class="w-full h-[125px]" image="/assets/img/psychiatry/step-two.webp" step="Step 2 :" description="Receiver Your Prescription"/>
+        <x-how-it-works class="w-full h-[125px]" image="/assets/img/psychiatry/step-three.webp" step="Step 3 :" description="Medications Delivered To You"/>
+
+        <x-cta-btn class="mt-4" title="Speak To Doctor"/>
+    </section>
+
+    {{-- Specific Needs Section --}}
+    <section id="specific-needs" class="px-4 mt-10 py-10 bg-[#F3F4F6] hidden md:block">
         <h2 class="text-center text-[#1AD0D0] text-3xl font-semibold">Targeted Care Medications <br> For Your Specific Needs</h2>
         <h4 class="text-center text-lg mt-2">We are here to support individuals managing a range of conditions.</h4>
     
         <div class="flex items-center items-center justify-center flex-wrap gap-6 mt-4 w-[600px] mx-auto">
-            <x-specific-needs class="w-[280px] h-[280px]" image="/assets/img/psychiatry/desktop/need-one.webp" title="Depression"/>
-            <x-specific-needs class="w-[280px] h-[280px]" image="/assets/img/psychiatry/desktop/need-two.webp" title="Anxiety"/>
-            <x-specific-needs class="w-[280px] h-[280px]" image="/assets/img/psychiatry/desktop/need-three.webp" title="Bipolar"/>
-            <x-specific-needs class="w-[280px] h-[280px]" image="/assets/img/psychiatry/desktop/need-four.webp" title="ADHD"/>
+            <x-specific-needs class="w-[280px] h-[280px]" image="https://ik.imagekit.io/j8phzwpsbx/psychiatry/need-one.webp" title="Depression"/>
+            <x-specific-needs class="w-[280px] h-[280px]" image="https://ik.imagekit.io/j8phzwpsbx/psychiatry/need-two.webp" title="Anxiety"/>
+            <x-specific-needs class="w-[280px] h-[280px]" image="https://ik.imagekit.io/j8phzwpsbx/psychiatry/need-three.webp" title="Bipolar"/>
+            <x-specific-needs class="w-[280px] h-[280px]" image="https://ik.imagekit.io/j8phzwpsbx/psychiatry/need-four.webp" title="ADHD"/>
         </div>
     </section>
+    <section id="specific-needs" class="px-4 mt-10 py-10 bg-[#F3F4F6] max-w-md mx-auto md:hidden">
+        <h2 class="text-center text-[#1AD0D0] text-3xl font-semibold">Targeted Care Medications for Your Specific Needs</h2>
+        <h4 class="text-center text-lg mt-2">We are here to support individuals managing a range of conditions.</h4>
+    
+        <x-specific-needs class="mt-4 h-72 w-full" image="/assets/img/psychiatry/need-one.webp" title="Depression"/>
+        <x-specific-needs class="mt-2 h-72 w-full" image="/assets/img/psychiatry/need-two.webp" title="Anxiety"/>
+        <x-specific-needs class="mt-2 h-72 w-full" image="/assets/img/psychiatry/need-three.webp" title="Bipolar"/>
+        <x-specific-needs class="mt-2 h-72 w-full" image="/assets/img/psychiatry/need-four.webp" title="ADHD"/>
+    </section>
 
+    {{-- Explore Medicine Section --}}
     <section id="explore-medicines" class="px-4 mt-10">
-        <h2 class="text-center text-[#1AD0D0] text-3xl font-semibold">Explore Our Range of Medicines</h2>
-        <h4 class="text-center text-lg mt-2">Browse Our Available Medicines</h4>
+        <h2 class="text-center text-[#1AD0D0] text-3xl font-semibold max-w-md md:max-w-6xl mx-auto">Explore Our Range of Medicines</h2>
+        <h4 class="text-center text-lg mt-2 max-w-md md:max-w-6xl mx-auto">Browse Our Available Medicines</h4>
 
         <div class="text-center">
-            <input class="border-2 border-[#1AD0D0] focus:outline-[#1AD0D0] w-[600px] p-2 rounded-full mt-4 mx-auto" placeholder="Search medicines" type="text">
+            <form id="search-form">
+                <input id="search-input" class="border-2 border-[#1AD0D0] focus:outline-[#1AD0D0] md:w-[600px] w-full p-2 rounded-full mt-4 max-w-md md:max-w-6xl mx-auto" placeholder="Search medicines" type="text" name="q">
+            </form>
         </div>
 
-        <div id="scroll-container" class="overflow-x-auto whitespace-nowrap no-scrollbar mt-4 text-center">
+        <div id="scroll-container" class="overflow-x-auto whitespace-nowrap no-scrollbar mt-4 text-center max-w-md md:max-w-6xl mx-auto">
             <div class="inline-flex gap-2">
-                <button
-                    class="flex items-center gap-2 px-4 py-2 border rounded-full text-sm text-white bg-[#1AD0D0] cursor-pointer">
+                <button data-category="all" 
+                    class="category-btn flex items-center gap-2 px-4 py-2 border rounded-full text-sm text-white bg-[#1AD0D0] cursor-pointer">
                     <p>All Medicine</p>
                 </button>
-                <button
-                    class="flex items-center gap-2 px-4 py-2 rounded-full text-sm text-black bg-[#F3F4F6] cursor-pointer">
+                <button data-category="Depression" 
+                    class="category-btn flex items-center gap-2 px-4 py-2 rounded-full text-sm text-black bg-[#F3F4F6] cursor-pointer">
                     <p>Depression</p>
                 </button>
-                <button
-                    class="flex items-center gap-2 px-4 py-2 rounded-full text-sm text-black bg-[#F3F4F6] cursor-pointer">
+                <button data-category="Anxiety" 
+                    class="category-btn flex items-center gap-2 px-4 py-2 rounded-full text-sm text-black bg-[#F3F4F6] cursor-pointer">
                     <p>Anxiety</p>
                 </button>
-                <button
-                    class="flex items-center gap-2 px-4 py-2 rounded-full text-sm text-black bg-[#F3F4F6] cursor-pointer">
+                <button data-category="Bipolar" 
+                    class="category-btn flex items-center gap-2 px-4 py-2 rounded-full text-sm text-black bg-[#F3F4F6] cursor-pointer">
                     <p>Bipolar</p>
                 </button>
-                <button
-                    class="flex items-center gap-2 px-4 py-2 rounded-full text-sm text-black bg-[#F3F4F6] cursor-pointer">
+                <button data-category="ADHD" 
+                    class="category-btn flex items-center gap-2 px-4 py-2 rounded-full text-sm text-black bg-[#F3F4F6] cursor-pointer">
                     <p>ADHD</p>
                 </button>
             </div>
         </div>
 
-        <div class="flex flex-row items-center justify-center gap-4 mt-4 flex-wrap w-[600px] mx-auto">
-            <div>
-                <img class="w-[170px] h-auto rounded-3xl" src="/assets/img/psychiatry/medicine-one.webp" alt="" />
-                <p class="font-medium text-center mt-2">Obat ABC</p>
+        <div id="medicine-container" class="flex flex-row items-center justify-center gap-4 mt-4 flex-wrap max-w-md md:max-w-6xl mx-auto md:w-[600px]">
+            @foreach ($medicines as $med)
+            <div class="medicine-card" data-name="{{ strtolower($med['name']) }}" data-category="{{ $med['category'] }}">
+                <img class="w-[170px] h-[170px] rounded-3xl" src="/assets/img/psychiatry/{{ $med['image'] }}" alt="">
+                <p class="font-medium text-center mt-2">{{ $med['name'] }}</p>
                 <button class="bg-[#1AD0D0] py-2 px-4 rounded-full w-full cursor-pointer">
                     <div class="flex flex-row items-center gap-2 justify-center">
                         <img class="w-6 h-6" src="/assets/img/psychiatry/cart-icon-white.png" alt="cart-icon" />
@@ -212,37 +229,32 @@
                     </div>
                 </button>
             </div>
-            <div>
-                <img class="w-[170px] h-auto rounded-3xl" src="/assets/img/psychiatry/medicine-one.webp" alt="" />
-                <p class="font-medium text-center mt-2">Obat ABC</p>
-                <button class="bg-[#1AD0D0] py-2 px-4 rounded-full w-full cursor-pointer">
-                    <div class="flex flex-row items-center gap-2 justify-center">
-                        <img class="w-6 h-6" src="/assets/img/psychiatry/cart-icon-white.png" alt="cart-icon" />
-                        <p class="text-white">Add To Cart</p>
-                    </div>
-                </button>
-            </div>
-            <div>
-                <img class="w-[170px] h-auto rounded-3xl" src="/assets/img/psychiatry/medicine-one.webp" alt="" />
-                <p class="font-medium text-center mt-2">Obat ABC</p>
-                <button class="bg-[#1AD0D0] py-2 px-4 rounded-full w-full cursor-pointer">
-                    <div class="flex flex-row items-center gap-2 justify-center">
-                        <img class="w-6 h-6" src="/assets/img/psychiatry/cart-icon-white.png" alt="cart-icon" />
-                        <p class="text-white">Add To Cart</p>
-                    </div>
-                </button>
-            </div>
+            @endforeach
+            <div id="no-results-message" class="text-red-500">Medicine not found</div>
         </div>
     </section>
 
-    <section id="couldnt-find" class="px-4 mt-10">
+    {{-- Couldnt Find Section --}}
+    <section id="couldnt-find" class="px-4 mt-10 hidden md:block">
         <h2 class="text-center text-[#1AD0D0] text-3xl font-semibold">Couldn't Find Your Preferred Medicine ?</h2>
         <h4 class="text-center text-lg mt-2">Tell Us What You Need. We'll Handle the Rest.</h4>
 
         <x-cta-btn class="mt-4 w-[300px]" title="Let Us Know"/>
     </section>
+    <section id="couldnt-find" class="px-4 mt-10 max-w-md mx-auto md:hidden ">
+        <h2 class="text-center text-[#1AD0D0] text-3xl font-semibold">Couldn't Find Your Preferred Medicine ?</h2>
+        <h4 class="text-center text-lg mt-2">Tell Us What You Need. We'll Handle the Rest.</h4>
 
-    @include('components.desktop.footer')
+        <x-cta-btn class="mt-4" title="Let Us Know"/>
+    </section>
+
+    {{-- Footer Section --}}
+    <div class="hidden md:block">
+        @include('components.desktop.footer')
+    </div>
+    <div class="max-w-md mx-auto md:hidden">
+        @include('components.mobile.footer')
+    </div>
 </div>
 
 <style>
@@ -252,35 +264,102 @@
 </style>
 
 <script>
-    const slider = document.getElementById('scroll-container');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-  
-    slider.addEventListener('mousedown', (e) => {
-      isDown = true;
-      slider.classList.add('active');
-      startX = e.pageX - slider.offsetLeft;
-      scrollLeft = slider.scrollLeft;
+    document.addEventListener('DOMContentLoaded', function() {
+        // For slider
+        const slider = document.getElementById('scroll-container');
+        if (slider) {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+          
+            slider.addEventListener('mousedown', (e) => {
+                isDown = true;
+                slider.classList.add('active');
+                startX = e.pageX - slider.offsetLeft;
+                scrollLeft = slider.scrollLeft;
+            });
+          
+            slider.addEventListener('mouseleave', () => {
+                isDown = false;
+                slider.classList.remove('active');
+            });
+          
+            slider.addEventListener('mouseup', () => {
+                isDown = false;
+                slider.classList.remove('active');
+            });
+          
+            slider.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - slider.offsetLeft;
+                const walk = (x - startX) * 1;
+                slider.scrollLeft = scrollLeft - walk;
+            });
+        }
+    
+        // For live search
+        const searchInput = document.getElementById('search-input');
+        const medicineCards = document.querySelectorAll('.medicine-card');
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        
+        if (searchInput && medicineCards.length && categoryButtons.length) {
+            // Store all medicines for filtering
+            const allMedicines = Array.from(medicineCards).map(card => ({
+                element: card,
+                name: card.dataset.name.toLowerCase(),
+                category: card.dataset.category
+            }));
+            
+            // Filter function
+            function filterMedicines() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const activeCategoryBtn = document.querySelector('.category-btn.active') || 
+                                        document.querySelector('.category-btn.bg-\\[\\#1AD0D0\\]');
+                const activeCategory = activeCategoryBtn ? activeCategoryBtn.dataset.category : 'all';
+                
+                let hasVisibleItems = false;
+                
+                allMedicines.forEach(medicine => {
+                    const matchesSearch = medicine.name.includes(searchTerm);
+                    const matchesCategory = activeCategory === 'all' || medicine.category === activeCategory;
+                    const shouldShow = matchesSearch && matchesCategory;
+                    
+                    medicine.element.style.display = shouldShow ? 'block' : 'none';
+                    if (shouldShow) hasVisibleItems = true;
+                });
+                
+                // Optional: Show "no results" message if needed
+                document.getElementById('no-results-message').style.display = hasVisibleItems ? 'none' : 'block';
+            }
+            
+            // Search input event with debounce
+            let debounceTimer;
+            searchInput.addEventListener('input', () => {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(filterMedicines, 300);
+            });
+            
+            // Category buttons events
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active button using a dedicated class
+                    categoryButtons.forEach(btn => {
+                        btn.classList.remove('active', 'text-white', 'bg-[#1AD0D0]', 'border');
+                        btn.classList.add('text-black', 'bg-[#F3F4F6]');
+                    });
+                    
+                    this.classList.add('active', 'text-white', 'bg-[#1AD0D0]', 'border');
+                    this.classList.remove('text-black', 'bg-[#F3F4F6]');
+                    
+                    filterMedicines();
+                });
+            });
+            
+            // Initialize
+            filterMedicines();
+        }
     });
-  
-    slider.addEventListener('mouseleave', () => {
-      isDown = false;
-      slider.classList.remove('active');
-    });
-  
-    slider.addEventListener('mouseup', () => {
-      isDown = false;
-      slider.classList.remove('active');
-    });
-  
-    slider.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX) * 1; // Adjust scroll speed if needed
-      slider.scrollLeft = scrollLeft - walk;
-    });
-  </script>
+    </script>
   
 @endsection

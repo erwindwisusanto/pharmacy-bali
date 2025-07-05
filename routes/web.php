@@ -34,4 +34,5 @@ Route::get('success', [ShopController::class, 'success'])->name('success');
 
 // PSYCHIATRY
 Route::get('/psychiatry', [PsychiatryController::class, 'index']);
+Route::get('/psychiatry/search', [PsychiatryController::class, 'search'])->name('search');
 Route::get('/psychiatry/order-list', [PsychiatryController::class, 'order'])->name('order-list');
