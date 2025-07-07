@@ -1,6 +1,6 @@
 <footer class="bg-[#1AD0D0] p-4 mt-10">
     <div class="flex items-center justify-between">
-        <img class="w-28 h-10" src="/assets/img/psychiatry/cs-logo-white.png" alt="cepat sehat logo" />
+        <img class="w-[160px] h-auto" src="/assets/img/psychiatry/pb-logo-white.png" alt="pharmacy bali logo" />
         <img class="w-28 h-10" src="/assets/img/psychiatry/atensi-logo.png" alt="atensi logo" />
     </div>
 

@@ -115,22 +115,29 @@
 <div class="max-w-5xl mx-auto">
 
     {{-- Navbar Section --}}
-    <nav class="flex items-center justify-between p-4 mx-auto max-w-md md:max-w-5xl">
-        <img class="w-28 h-10" src="/assets/img/psychiatry/cs-logo.png" alt="cepat sehat logo" />
-        <a href="{{ route('order-list') }}">
-            <img class="w-8 h-8" src="/assets/img/psychiatry/cart-icon.png" alt="cart-icon" />
-        </a>
+    <nav class="fixed top-0 left-1/2 transform -translate-x-1/2 max-w-screen-sm w-full bg-white p-4 max-w-md md:max-w-5xl">
+        <div class="flex items-center justify-between">
+            <img width="160" height="24" class="w-[160px] h-auto" src="/assets/img/psychiatry/pb-logo.png" alt="pharmacy bali logo" />
+            <a href="{{ route('order-list') }}">
+                <img class="w-8 h-8" src="/assets/img/psychiatry/cart-icon.png" alt="cart-icon" />
+            </a>
+            {{-- When cart not empty activate this design --}}
+            {{-- <a href="#" class="py-2 px-4 bg-green-500 rounded-full flex items-center justify-center gap-2" >
+                <img class="w-8 h-8" src="/assets/img/psychiatry/cart-icon-white.png" alt="cart-icon" />
+                <p class="font-semibold text-xl text-white">My Cart (1)</p>
+            </a>          --}}
+        </div>
     </nav>
 
     {{-- Hero Section --}}
-    <section id="hero" class="hidden md:block">
+    <section id="hero" class="pt-22 hidden md:block">
         <h1 class="font-semibold text-center text-3xl text-[#1AD0D0]">Prescribed Psychiatry Medications, <br> Delivered To Your Door</h1>
         <img width="600px" height="400px" class="w-[600px] h-auto mx-auto rounded-3xl my-8" src="https://ik.imagekit.io/j8phzwpsbx/psychiatry/hero-image-desktop.webp" alt="cepat sehat logo" />
 
         <x-cta-btn class="w-[300px]" title="Get Medicine"/>
     </section>
-    <section id="hero" class="bg-[url('/assets/img/psychiatry/hero-image.webp')] bg-cover bg-center h-[650px] w-full block md:hidden max-w-md mx-auto">
-        <div class="flex flex-col justify-end h-full py-10 px-4 text-white">
+    <section id="hero" class="mt-12 bg-[url('/assets/img/psychiatry/hero-image.webp')] bg-cover bg-center h-[650px] w-full block md:hidden max-w-md mx-auto">
+        <div class="flex flex-col justify-end h-full pb-20 px-4 text-white">
             <h1 class="font-semibold text-center text-3xl mb-6">Prescribed Psychiatry Medications, Delivered To Your Door</h1>
 
             <x-cta-btn class="w-full" title="Get Medicine"/>
@@ -138,7 +145,7 @@
     </section>
 
     {{-- How It Works Section --}}
-    <section id="how-it-works" class="px-4 mt-10 hidden md:block">
+    <section id="how-it-works" class="px-4 mt-10 py-10 bg-[#F3F4F6] hidden md:block">
         <h2 class="text-center text-[#1AD0D0] text-3xl font-semibold">How It Works</h2>
         <h4 class="text-center text-lg mt-2">Simple Steps to Support Your Mental Health</h4>
 
@@ -148,7 +155,7 @@
 
         <x-cta-btn class="mt-4 w-[300px]" title="Speak To Doctor"/>
     </section>
-    <section id="how-it-works" class="px-4 mt-10 max-w-md mx-auto md:hidden">
+    <section id="how-it-works" class="px-4 py-10 bg-[#F3F4F6] max-w-md mx-auto md:hidden">
         <h2 class="text-center text-[#1AD0D0] text-3xl font-semibold">How It Works</h2>
         <h4 class="text-center text-lg mt-2">Simple Steps to Support Your Mental Health</h4>
 
@@ -160,7 +167,7 @@
     </section>
 
     {{-- Specific Needs Section --}}
-    <section id="specific-needs" class="px-4 mt-10 py-10 bg-[#F3F4F6] hidden md:block">
+    <section id="specific-needs" class="px-4 mt-10  hidden md:block">
         <h2 class="text-center text-[#1AD0D0] text-3xl font-semibold">Targeted Care Medications <br> For Your Specific Needs</h2>
         <h4 class="text-center text-lg mt-2">We are here to support individuals managing a range of conditions.</h4>
     
@@ -171,7 +178,7 @@
             <x-specific-needs class="w-[280px] h-[280px]" image="https://ik.imagekit.io/j8phzwpsbx/psychiatry/need-four.webp" title="ADHD"/>
         </div>
     </section>
-    <section id="specific-needs" class="px-4 mt-10 py-10 bg-[#F3F4F6] max-w-md mx-auto md:hidden">
+    <section id="specific-needs" class="px-4 mt-10 max-w-md mx-auto md:hidden">
         <h2 class="text-center text-[#1AD0D0] text-3xl font-semibold">Targeted Care Medications for Your Specific Needs</h2>
         <h4 class="text-center text-lg mt-2">We are here to support individuals managing a range of conditions.</h4>
     
@@ -228,6 +235,16 @@
                         <p class="text-white">Add To Cart</p>
                     </div>
                 </button>
+                {{-- When user clicked add to cart activate this counter --}}
+                {{-- <div class="flex flex-row items-center justify-between">
+                    <button id="increased" class="bg-[#1AD0D0] rounded-full px-3 py-1 text-white text-xl">
+                        +
+                    </button>
+                    <p>1</p>
+                    <button id="decreased" class="bg-[#1AD0D0] rounded-full px-3 py-1 text-white text-xl">
+                        -
+                    </button>
+                </div> --}}
             </div>
             @endforeach
             <div id="no-results-message" class="text-red-500">Medicine not found</div>

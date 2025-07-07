@@ -35,7 +35,7 @@
 <div class="max-w-5xl mx-auto">
 
     <nav class="flex items-center justify-between p-4 max-w-md mx-auto md:max-w-5xl">
-        <img class="w-auto h-10" src="/assets/img/psychiatry/cs-logo.png" alt="cepat sehat logo" />
+        <img class="w-[160px] h-auto" src="/assets/img/psychiatry/pb-logo.png" alt="pharmcay bali logo" />
     </nav>
 
     <section id="order-list" class="mt-10 px-4 max-w-md mx-auto md:max-w-5xl">
