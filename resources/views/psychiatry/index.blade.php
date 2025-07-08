@@ -132,11 +132,11 @@
     {{-- Hero Section --}}
     <section id="hero" class="pt-22 hidden md:block">
         <h1 class="font-semibold text-center text-3xl text-[#1AD0D0]">Prescribed Psychiatry Medications, <br> Delivered To Your Door</h1>
-        <img width="600px" height="400px" class="w-[600px] h-auto mx-auto rounded-3xl my-8" src="https://ik.imagekit.io/j8phzwpsbx/psychiatry/hero-image-desktop.webp" alt="cepat sehat logo" />
+        <img width="600px" height="400px" class="w-[600px] h-auto mx-auto rounded-3xl my-8" src="/assets/img/psychiatry/desktop/hero-image-desktop.webp" alt="cepat sehat logo" />
 
         <x-cta-btn class="w-[300px]" title="Get Medicine"/>
     </section>
-    <section id="hero" class="mt-12 bg-[url('/assets/img/psychiatry/hero-image.webp')] bg-cover bg-center h-[650px] w-full block md:hidden max-w-md mx-auto">
+    <section id="hero" class="mt-12 bg-[url('/assets/img/psychiatry/hero-image-new.webp')] bg-cover bg-center h-[650px] w-full block md:hidden max-w-md mx-auto">
         <div class="flex flex-col justify-end h-full pb-20 px-4 text-white">
             <h1 class="font-semibold text-center text-3xl mb-6">Prescribed Psychiatry Medications, Delivered To Your Door</h1>
 
