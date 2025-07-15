@@ -7,7 +7,9 @@
 {{-- MOBILE (Use For Mobile Only) --}}
 {{-- <div class="max-w-md mx-auto block md:hidden">
     <nav class="flex items-center p-4">
-        <img class="w-auto h-10" src="/assets/img/psychiatry/cs-logo.png" alt="cepat sehat logo" />
+        <a href="{{ route('psychiatry') }}">
+            <img class="w-auto h-10" src="/assets/img/psychiatry/cs-logo.png" alt="cepat sehat logo" />
+        </a>
     </nav>
 
     <section id="order-list" class="px-4 mt-4">
@@ -38,7 +40,9 @@
 <div class="max-w-5xl mx-auto">
 
     <nav class="flex items-center justify-between p-4 max-w-md mx-auto md:max-w-5xl">
-        <img class="w-[160px] h-auto" src="/assets/img/psychiatry/pb-logo.png" alt="pharmcay bali logo" />
+        <a href="{{ route('psychiatry') }}">
+            <img class="w-[160px] h-auto" src="/assets/img/psychiatry/pb-logo.png" alt="pharmcay bali logo" />
+        </a>
     </nav>
 
     <section id="order-list" class="mt-10 px-4 max-w-md mx-auto md:max-w-5xl">
