@@ -8,8 +8,11 @@
 {{-- <div class="max-w-md mx-auto block md:hidden">
     <nav class="flex items-center justify-between p-4">
         <img class="w-auto h-10" src="/assets/img/psychiatry/cs-logo.png" alt="cepat sehat logo" />
-        <a href="{{ route('order-list') }}">
-            <img class="w-8 h-8" src="/assets/img/psychiatry/cart-icon.png" alt="cart-icon" />
+        <a href="{{ route('order-list') }}"
+            id="cart-button"
+            class="flex items-center justify-center gap-2 transition-all duration-200">
+            <img id="cart-icon" class="w-8 h-8" src="/assets/img/psychiatry/cart-icon.png" alt="cart-icon" />
+            <p id="cart-label" class="font-semibold text-xl hidden">My Cart (0)</p>
         </a>
     </nav>
 
@@ -88,13 +91,13 @@
 
         <div id="medicine-container" class="flex flex-row items-center justify-center gap-4 mt-4 flex-wrap">
             @foreach ($medicines as $med)
-            <div class="medicine-card" data-name="{{ strtolower($med['name']) }}" data-category="{{ $med['category'] }}">
+            <div class="medicine-card" data-name="{{ strtolower($med['name']) }}" data-category="{{ $med['category'] }}" data-image="{{ $med['image'] }}" data-id="{{ $med['id'] }}">
                 <img class="w-[170px] h-auto rounded-3xl" src="/assets/img/psychiatry/{{ $med['image'] }}" alt="" />
                 <p class="font-medium text-center mt-2">{{ $med['name'] }}</p>
                 <button class="bg-[#1AD0D0] py-2 px-4 rounded-full w-full cursor-pointer">
                     <div class="flex flex-row items-center gap-2 justify-center">
                         <img class="w-6 h-6" src="/assets/img/psychiatry/cart-icon-white.png" alt="cart-icon" />
-                        <p class="text-white">Add To Cart</p>
+                        <p class="text-white add-to-cart">Add To Cart</p>
                     </div>
                 </button>
             </div>
@@ -113,19 +116,17 @@
 </div> --}}
 
 <div class="max-w-5xl mx-auto">
-
     {{-- Navbar Section --}}
     <nav class="fixed top-0 left-1/2 transform -translate-x-1/2 max-w-screen-sm w-full bg-white p-4 max-w-md md:max-w-5xl">
         <div class="flex items-center justify-between">
             <img width="160" height="24" class="w-[160px] h-auto" src="/assets/img/psychiatry/pb-logo.png" alt="pharmacy bali logo" />
-            <a href="{{ route('order-list') }}">
-                <img class="w-8 h-8" src="/assets/img/psychiatry/cart-icon.png" alt="cart-icon" />
+            <a href="{{ route('order-list') }}"
+                id="cart-button"
+                class="flex items-center justify-center gap-2 transition-all duration-200">
+                <img id="cart-icon" class="w-8 h-8" src="/assets/img/psychiatry/cart-icon.png" alt="cart-icon" />
+                <p id="cart-label" class="font-semibold text-xl hidden">My Cart (0)</p>
             </a>
-            {{-- When cart not empty activate this design --}}
-            {{-- <a href="#" class="py-2 px-4 bg-green-500 rounded-full flex items-center justify-center gap-2" >
-                <img class="w-8 h-8" src="/assets/img/psychiatry/cart-icon-white.png" alt="cart-icon" />
-                <p class="font-semibold text-xl text-white">My Cart (1)</p>
-            </a>          --}}
+
         </div>
     </nav>
 
@@ -226,25 +227,25 @@
 
         <div id="medicine-container" class="flex flex-row items-center justify-center gap-4 mt-4 flex-wrap max-w-md md:max-w-6xl mx-auto md:w-[600px]">
             @foreach ($medicines as $med)
-            <div class="medicine-card" data-name="{{ strtolower($med['name']) }}" data-category="{{ $med['category'] }}">
+            <div class="medicine-card" data-name="{{ ($med['name']) }}" data-category="{{ $med['category'] }}" data-image="{{ $med['image'] }}" data-id="{{ $med['id'] }}">
                 <img class="w-[170px] h-[170px] rounded-3xl" src="/assets/img/psychiatry/{{ $med['image'] }}" alt="">
                 <p class="font-medium text-center mt-2">{{ $med['name'] }}</p>
-                <button class="bg-[#1AD0D0] py-2 px-4 rounded-full w-full cursor-pointer">
+                <button class="bg-[#1AD0D0] py-2 px-4 rounded-full w-full cursor-pointer add-to-cart-container">
                     <div class="flex flex-row items-center gap-2 justify-center">
                         <img class="w-6 h-6" src="/assets/img/psychiatry/cart-icon-white.png" alt="cart-icon" />
-                        <p class="text-white">Add To Cart</p>
+                        <p class="text-white add-to-cart">Add To Cart</p>
                     </div>
                 </button>
                 {{-- When user clicked add to cart activate this counter --}}
-                {{-- <div class="flex flex-row items-center justify-between">
-                    <button id="increased" class="bg-[#1AD0D0] rounded-full px-3 py-1 text-white text-xl">
-                        +
-                    </button>
-                    <p>1</p>
-                    <button id="decreased" class="bg-[#1AD0D0] rounded-full px-3 py-1 text-white text-xl">
+                <div id="counter-container" class="flex flex-row items-center justify-between">
+                    <button id="decrement" class="bg-[#1AD0D0] rounded-full px-3 py-1 text-white text-xl decrement">
                         -
                     </button>
-                </div> --}}
+                    <span class="quantity">0</span>
+                    <button id="increment" class="bg-[#1AD0D0] rounded-full px-3 py-1 text-white text-xl increment">
+                        +
+                    </button>
+                </div>
             </div>
             @endforeach
             <div id="no-results-message" class="text-red-500">Medicine not found</div>
@@ -281,6 +282,98 @@
 </style>
 
 <script>
+    function updateLocalStorageCart(product, change) {
+        const id = product.dataset.id;
+        const name = product.dataset.name;
+        const category = product.dataset.category;
+        const image = product.dataset.image;
+
+        let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+        let item = cart.find(p => p.id === id);
+
+        if (item) {
+            item.quantity += change;
+
+            if (item.quantity <= 0) {
+                cart = cart.filter(p => p.id !== id);
+            }
+        } else if (change > 0) {
+            cart.push({
+                id,
+                name,
+                category,
+                image,
+                quantity: 1
+            });
+        }
+
+        localStorage.setItem('cartItems', JSON.stringify(cart));
+        updateCartButton();
+        return cart;
+    }
+
+    function getItemQuantity(id) {
+        const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const item = cart.find(p => p.id === id);
+        return item ? item.quantity : 0;
+    }
+
+    function updateQuantityDisplay(productDiv, quantity) {
+        productDiv.querySelector('.quantity').textContent = quantity;
+
+        const counterContainer = productDiv.querySelector('#counter-container');
+        const addToCartBtn = productDiv.querySelector('.add-to-cart-container');
+        if (quantity > 0) {
+            counterContainer.style.display = 'flex'; // tampilkan counter
+            addToCartBtn.classList.add('hidden')
+        } else {
+            counterContainer.style.display = 'none'; // sembunyikan counter
+            addToCartBtn.classList.remove('hidden')
+        }
+    }
+
+    document.querySelectorAll('.medicine-card').forEach(productDiv => {
+        const id = productDiv.dataset.id;
+
+        updateQuantityDisplay(productDiv, getItemQuantity(id));
+
+        productDiv.querySelector('.increment').addEventListener('click', () => {
+            updateLocalStorageCart(productDiv, 1);
+            updateQuantityDisplay(productDiv, getItemQuantity(id));
+        });
+
+        productDiv.querySelector('.decrement').addEventListener('click', () => {
+            updateLocalStorageCart(productDiv, -1);
+            updateQuantityDisplay(productDiv, getItemQuantity(id));
+        });
+
+        productDiv.querySelector('.add-to-cart')?.addEventListener('click', () => {
+            updateLocalStorageCart(productDiv, 1);
+            updateQuantityDisplay(productDiv, getItemQuantity(id));
+        });
+    });
+
+    function updateCartButton() {
+        const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+        const cartBtn = document.getElementById('cart-button');
+        const cartIcon = document.getElementById('cart-icon');
+        const cartLabel = document.getElementById('cart-label');
+
+        if (totalQty > 0) {
+            cartBtn.classList.add('bg-green-500', 'rounded-full', 'py-2', 'px-4', 'text-white');
+            cartLabel.textContent = `My Cart (${totalQty})`;
+            cartLabel.classList.remove('hidden');
+            cartIcon.src = '/assets/img/psychiatry/cart-icon-white.png';
+        } else {
+            cartBtn.classList.remove('bg-green-500', 'rounded-full', 'py-2', 'px-4');
+            cartLabel.classList.add('hidden');
+            cartIcon.src = '/assets/img/psychiatry/cart-icon.png';
+        }
+    }
+
+
     document.addEventListener('DOMContentLoaded', function() {
         // For slider
         const slider = document.getElementById('scroll-container');
@@ -376,7 +469,9 @@
             // Initialize
             filterMedicines();
         }
+
+        updateCartButton();
     });
-    </script>
+</script>
   
 @endsection
