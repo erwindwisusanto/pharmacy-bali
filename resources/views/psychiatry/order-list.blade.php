@@ -150,7 +150,7 @@
         e.preventDefault();
 
         const message = getCartMessage();
-        const phoneNumber = '6281259804025';
+        const phoneNumber = '6282221122311';
 
         const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
         window.open(url, '_blank');
