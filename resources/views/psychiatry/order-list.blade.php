@@ -114,7 +114,7 @@
             const productHTML = `
             <div class="flex items-center justify-between border-2 border-[#1AD0D0] rounded-4xl mt-4 mx-auto w-full md:w-[600px]">
                 <div class="flex items-center gap-2">
-                    <img class="w-[100px] h-auto rounded-4xl" src="/assets/img/psychiatry/${item.image}" alt="${item.name}">
+                    <img class="w-[100px] h-auto rounded-4xl" src="${item.image}" alt="${item.name}">
                     <p class="font-medium">${item.name}</p>
                 </div>
                 <p class="font-medium mr-2">x ${item.quantity} item</p>

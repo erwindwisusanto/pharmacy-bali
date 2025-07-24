@@ -92,7 +92,7 @@
         <div id="medicine-container" class="flex flex-row items-center justify-center gap-4 mt-4 flex-wrap">
             @foreach ($medicines as $med)
             <div class="medicine-card" data-name="{{ strtolower($med['name']) }}" data-category="{{ $med['category'] }}" data-image="{{ $med['image'] }}" data-id="{{ $med['id'] }}">
-                <img class="w-[170px] h-auto rounded-3xl" src="/assets/img/psychiatry/{{ $med['image'] }}" alt="" />
+                <img class="w-[170px] h-auto rounded-3xl" src="{{ $med['image'] }}" alt="" />
                 <p class="font-medium text-center mt-2">{{ $med['name'] }}</p>
                 <button class="bg-[#1AD0D0] py-2 px-4 rounded-full w-full cursor-pointer">
                     <div class="flex flex-row items-center gap-2 justify-center">
@@ -228,7 +228,7 @@
         <div id="medicine-container" class="flex flex-row items-center justify-center gap-4 mt-4 flex-wrap max-w-md md:max-w-6xl mx-auto md:w-[600px]">
             @foreach ($medicines as $med)
             <div class="medicine-card" data-name="{{ ($med['name']) }}" data-category="{{ $med['category'] }}" data-image="{{ $med['image'] }}" data-id="{{ $med['id'] }}">
-                <img class="w-[170px] h-[170px] rounded-3xl" src="/assets/img/psychiatry/{{ $med['image'] }}" alt="">
+                <img class="w-[170px] h-[170px] rounded-3xl" src="{{ $med['image'] }}" alt="">
                 <p class="font-medium text-center mt-2">{{ $med['name'] }}</p>
                 <button class="bg-[#1AD0D0] py-2 px-4 rounded-full w-full cursor-pointer add-to-cart-container">
                     <div class="flex flex-row items-center gap-2 justify-center">
